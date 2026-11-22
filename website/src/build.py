@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import C, LANGS, NAMES, SAY, PRICE, PRICE_LABEL, PRICE_NOTE, UI
 from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
+from cailoa import T as CL, UI as CLUI, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.path.join(HERE,'..','public') if os.path.isdir(os.path.join(HERE,'..','public')) else os.path.join(HERE,'..','website-cai-dat','public')  # repo GitHub: website/src -> website/public
@@ -39,6 +40,10 @@ CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
 .qr{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.qr img{width:150px;height:150px;background:#fff;border-radius:12px;padding:8px;margin:0}
 .dlc ol{padding-left:1.2em}.dlc li{margin:6px 0}.note{font-size:.9rem;color:var(--mute);border-left:3px solid var(--acc);padding-left:10px}
 .lgrow{margin:10px 0;padding:14px 16px}.lgrow dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}.lgrow dt{color:var(--mute)}.lgrow dd{margin:0}
+.pcc{margin-top:18px}.pcc .btns{justify-content:flex-start;margin:6px 0 4px}.pcc ol{margin-top:12px}
+.gs{display:grid;gap:14px;grid-template-columns:1fr;margin:14px 0}.gs figure{margin:0;background:var(--card);border:1px solid #2a2a30;border-radius:16px;padding:12px}
+.gs figure img{width:100%;border-radius:10px;display:block;margin:0}.gs figcaption{margin-top:8px}.gs figcaption b{color:var(--acc)}.gs .n{color:var(--acc);font-weight:800;margin-right:6px}
+@media(min-width:860px){.gs.two{grid-template-columns:1fr 1fr}}
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
@@ -108,7 +113,25 @@ def download(l):
                 %(e(h),q,e(h),href,e(btn),''.join('<li>%s</li>'%x for x in steps),('<p class="note">%s</p>'%e(note)) if note else ''))
     b='<h1>%s</h1><p class="lead">%s</p><div class="dlg">%s%s</div>'%(e(p['dl_title']),e(p['dl_lead']),
         card(p['and_h'],p['and_btn'],APK,'qr-android.svg',p['and_steps']),card(p['ios_h'],p['ios_btn'],IOS,'qr-iphone.svg',p['ios_steps'],p['ios_note']))
+    t=CL[l]
+    b+=('<div class="dlc pcc" id="may-tinh"><h2>%s</h2><p>%s</p><div class="btns"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></div>'
+        '<ol>%s</ol><p><a href="%s">%s →</a></p></div>')%(e(t['card_h']),e(t['card_p']),WIN,e(t['win']),MAC,e(t['mac']),
+        ''.join('<li>%s</li>'%x for x in t['card_steps']),url(l,'cai-loa/'),e(t['guide']))
     return simple(l,'download/',p['dl'],b)
+def cailoa_page(l):
+    t=CL[l]; u=CLUI[l]; im=lambda n:'/img/cai-loa/%s/%s.jpg'%(l,n)
+    b='<h1>%s</h1><p class="lead">%s</p><p class="note">%s</p>'%(e(t['g_title']),e(t['g_lead']),e(t['need']))
+    b+='<div class="btns" style="justify-content:flex-start"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></div>'%(WIN,e(t['win']),MAC,e(t['mac']))
+    b+='<h2>%s</h2><div class="dlg"><div class="dlc"><h2>%s</h2><ol>%s</ol></div><div class="dlc"><h2>%s</h2><ol>%s</ol></div></div>'%(e(t['h1']),
+        e(t['win_h']),''.join('<li>%s</li>'%x for x in t['win_s']),e(t['mac_h']),''.join('<li>%s</li>'%x for x in t['mac_s']))
+    b+='<h2>%s</h2><p>%s</p><div class="gs two">%s</div>'%(e(t['h2']),e(t['h2_p']),''.join(
+        '<figure><img src="%s" alt="%s" loading="lazy" width="800" height="420"><figcaption><span class="n">%d</span>%s</figcaption></figure>'%(im('g%d'%n),e(t['alt_g'].format(n=n)),n,u['g'][n-1]) for n in range(1,6)))
+    b+='<h2>%s</h2><div class="gs">%s</div>'%(e(t['h3']),''.join(
+        '<figure><img src="%s" alt="%s" loading="lazy" width="1000"><figcaption><span class="n">%d</span>%s</figcaption></figure>'%(im('app-'+k),e(t['alt_app']),i+1,t['s3'][i]) for i,k in enumerate(['found','busy','done'])))
+    b+='<h2>%s</h2><p>%s</p>'%(e(t['h4']),t['p4'])
+    b+='<h2>%s</h2><ol>%s</ol>'%(e(t['h5']),''.join('<li>%s</li>'%e(x) for x in u['none_tips']))
+    b+='<h2>%s</h2><ul>%s</ul>'%(e(t['h6']),''.join('<li>%s</li>'%x for x in t['p6']))
+    return simple(l,'cai-loa/',t['g_title'],b)
 def support(l):
     p=P[l]; g=LG[l]; qa=list(p['qa'][:-1])+[g['del_q']]
     b='<h1>%s</h1><p>%s</p><div class="card"><p><b>Email:</b> <a href="mailto:info@karaokeaihome.com">info@karaokeaihome.com</a></p></div><h2>%s</h2>%s'%(
@@ -141,7 +164,7 @@ for l in LANGS:
     d=OUT if l=='vi' else os.path.join(OUT,l)
     os.makedirs(d,exist_ok=True)
     open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(home(l)); n+=1
-    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms)):
+    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page)):
         p=os.path.join(d,sub); os.makedirs(p,exist_ok=True)
         open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(fn(l)); n+=1
     for g,items in GROUPS:
@@ -153,7 +176,7 @@ print('pages',n)
 # sitemap (khong co privacy/terms), robots, 404, chuyen huong iPhone
 urls=[]
 for l in LANGS:
-    urls.append(url(l)); urls+= [url(l,'download/'),url(l,'support/')]
+    urls.append(url(l)); urls+= [url(l,'download/'),url(l,'cai-loa/'),url(l,'support/')]
     urls+=[url(l,'f/%s/'%slug) for g,items in GROUPS for slug,k,i in items]
 open(os.path.join(OUT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>%s%s</loc></url>\n'%(SITE,u) for u in urls)+'</urlset>\n')
 open(os.path.join(OUT,'robots.txt'),'w').write('User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n'%SITE)  # privacy/terms: an bang meta noindex
@@ -164,5 +187,8 @@ open(os.path.join(OUT,'404.html'),'w',encoding='utf-8').write('<!doctype html><h
 APK_LATEST='https://raw.githubusercontent.com/karaokeaihome/app/main/KaraokeAIHome.apk'  # kho GitHub karaokeaihome/app: ban moi chi can day file len
 os.makedirs(os.path.join(OUT,'tai','android'),exist_ok=True)
 open(os.path.join(OUT,'tai','android','index.html'),'w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=%s"><title>Karaoke AI Home</title></head><body><a href="%s">KaraokeAIHome.apk</a><script>location.replace("%s")</script></body></html>'%(APK_LATEST,APK_LATEST,APK_LATEST))
-open(os.path.join(OUT,'_redirects'),'w').write('/iphone https://app.karaokeaihome.com/app/ 302\n/tai/android %s 302\n'%APK_LATEST)
+for k,v in (('windows',WIN_LATEST),('mac',MAC_LATEST)):  # phan mem cai loa cho may tinh: ban moi nhat trong repo app/cai-loa/
+    os.makedirs(os.path.join(OUT,'tai',k),exist_ok=True)
+    open(os.path.join(OUT,'tai',k,'index.html'),'w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=%s"><title>Karaoke AI Home</title></head><body><a href="%s">%s</a><script>location.replace("%s")</script></body></html>'%(v,v,v.rsplit('/',1)[1],v))
+open(os.path.join(OUT,'_redirects'),'w').write('/iphone https://app.karaokeaihome.com/app/ 302\n/tai/android %s 302\n%s %s 302\n%s %s 302\n'%(APK_LATEST,WIN,WIN_LATEST,MAC,MAC_LATEST))
 print('pages',n,'sitemap',len(urls))
