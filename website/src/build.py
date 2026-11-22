@@ -40,14 +40,14 @@ CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
-GROUPS=[('k_tag',[('goi-bai','K',None),('tong-vang-mic','k_f',0),('hang-cho','k_f',1),('cham-diem','k_f',2),('radio','k_f',3)]),
+GROUPS=[('k_tag',[('goi-bai','K',None),('san-hat','san',0),('phong-thu','stu',0),('tong-vang-mic','k_f',0),('hang-cho','k_f',1),('cham-diem','k_f',2),('radio','k_f',3)]),
  ('a_tag',[('tro-ly-ai','A',None),('lich-thoi-tiet','a_f',0),('tin-hom-nay','a_f',1),('dich-noi','a_f',2)]),
  ('f_tag',[('be-hoc','f_f',0),('ong-ba','f_f',1),('chi-em','f_f',2),('anh-em','f_f',3),('the-duc','f_f',4),('giai-tri','f_f',5),('giao-dien','T',None)]),
  ('m_tag',[('bao-tien','m_f',0),('dam-thoai','m_f',1),('loi-nhac','m_f',2),('nha-thong-minh','m_f',3),('camera','m_f',4),('kho-ung-dung','m_f',5)]),
  ('p_tag',[('app','P',None),('dieu-khien','p_f',0),('micro-dien-thoai','p_f',1),('tiec-chia-se','p_f',2),('chieu-man-hinh','p_f',3)]),
  ('w_tag',[('bao-hanh','w_f',0),('cap-nhat','w_f',1),('rieng-tu','w_f',2)])]
 IMG={'goi-bai':'loa-phong-khach','tong-vang-mic':'loa-ban-lam-viec','bao-hanh':'phu-kien','hang-cho':'home','cham-diem':'entertain','radio':'entertain','giai-tri':'entertain',
- 'tro-ly-ai':'translate','dich-noi':'translate','lich-thoi-tiet':'home','the-duc':'fitness','app':'phone','dieu-khien':'phone','tiec-chia-se':'phone'}
+ 'tro-ly-ai':'translate','dich-noi':'translate','lich-thoi-tiet':'home','the-duc':'fitness','app':'phone','dieu-khien':'phone','tiec-chia-se':'phone','phong-thu':'phone','san-hat':'phone'}
 SPECIAL={'K':('🎤','k_h','k_p'),'A':('🤖','a_h','a_p'),'T':('🎨','t_h','t_p'),'P':('📲','p_h','p_p')}
 def feat(c,key,idx):
     if key in SPECIAL:

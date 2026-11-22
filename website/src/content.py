@@ -354,3 +354,40 @@ UI = {
  'fr':dict(gallery="Photos du produit", back="← Toutes les fonctionnalités", more="Autres fonctionnalités", all="Toutes les fonctionnalités", tap="Touchez une icône pour voir le détail"),
  'zh':dict(gallery="产品图片", back="← 全部功能", more="更多功能", all="全部功能", tap="点击图标查看详情"),
 }
+
+# ---- 2026-11-22: tính năng mới (Sàn hát, Phòng thu) + biểu tượng giống trong app ----
+NEW = {
+ 'vi': dict(
+  san=("🎪","Sàn hát","Đăng bài hát của bạn lên Sàn hát cho mọi người cùng nghe, hát đôi với người khác, thả tim ❤️, tặng hoa 🌹, bình luận và leo bảng Top tuần."),
+  stu=("🎙️","Phòng thu","Thu giọng hát trên nền nhạc karaoke ngay trên điện thoại: chọn tông nam hoặc tông nữ, chỉnh trầm, bổng, vang, echo, có mẫu chỉnh nhanh; nghe lại giọng khớp với nhạc rồi lưu thành file MP3."),
+  fit="Thể dục, Pickleball, Yoga, Thiền và Dưỡng sinh: bài tập có hình minh họa, đếm giờ, nhạc tập. Tập ngay trên điện thoại hoặc phát lên màn hình TV."),
+ 'en': dict(
+  san=("🎪","Singing Stage","Post your songs to the Singing Stage for everyone to hear, sing duets with others, give hearts ❤️ and flowers 🌹, comment, and climb the weekly Top chart."),
+  stu=("🎙️","Recording Studio","Record your voice over a karaoke track right on your phone: choose a male or female key, adjust bass, treble, reverb and echo with quick presets, play it back perfectly in sync, then save it as an MP3."),
+  fit="Workouts, Pickleball, Yoga, Meditation and gentle Qigong: illustrated exercises, timers and workout music. Train on your phone or play it on the TV screen."),
+ 'ja': dict(
+  san=("🎪","歌のステージ","歌った曲をステージに投稿してみんなに聴いてもらい、ほかの人とデュエット。ハート❤️や花🌹を贈ったり、コメントしたり、週間トップを目指せます。"),
+  stu=("🎙️","レコーディングスタジオ","スマホでカラオケに合わせて歌を録音。男性キー・女性キーを選び、低音・高音・リバーブ・エコーをかんたんプリセットで調整。音楽とぴったり合わせて再生し、MP3 で保存できます。"),
+  fit="フィットネス、ピックルボール、ヨガ、瞑想、気功：イラスト付きの運動、タイマー、トレーニング音楽。スマホでもテレビ画面でも。"),
+ 'ko': dict(
+  san=("🎪","노래 무대","부른 노래를 무대에 올려 모두와 함께 듣고, 다른 사람과 듀엣을 하고, 하트 ❤️와 꽃 🌹을 보내고, 댓글을 달며 주간 Top 순위에 도전하세요."),
+  stu=("🎙️","녹음실","휴대폰에서 노래방 반주에 맞춰 노래를 녹음하세요. 남성 키·여성 키를 고르고 저음, 고음, 리버브, 에코를 빠른 프리셋으로 조절하고, 반주와 딱 맞게 다시 듣고 MP3로 저장할 수 있습니다."),
+  fit="운동, 피클볼, 요가, 명상, 기공 체조: 그림이 있는 동작 안내, 타이머, 운동 음악. 휴대폰에서 하거나 TV 화면으로 띄워 보세요."),
+ 'fr': dict(
+  san=("🎪","Scène karaoké","Publiez vos chansons sur la Scène pour que tout le monde les écoute, chantez en duo, offrez des cœurs ❤️ et des fleurs 🌹, commentez et grimpez dans le Top de la semaine."),
+  stu=("🎙️","Studio d’enregistrement","Enregistrez votre voix sur un fond karaoké directement sur le téléphone : tonalité homme ou femme, graves, aigus, réverbération et écho avec des réglages rapides, réécoute parfaitement synchronisée, puis export en MP3."),
+  fit="Sport, Pickleball, Yoga, Méditation et Qi gong : exercices illustrés, minuteur et musique d’entraînement. Sur le téléphone ou sur l’écran de la TV."),
+ 'zh': dict(
+  san=("🎪","歌唱舞台","把你唱的歌发布到歌唱舞台让大家来听，和别人合唱，送爱心❤️和鲜花🌹，留言评论，冲击每周排行榜。"),
+  stu=("🎙️","录音棚","在手机上跟着卡拉OK伴奏录音：选择男调或女调，用快捷预设调节低音、高音、混响和回声，与伴奏精准同步回放，并保存为 MP3。"),
+  fit="健身、匹克球、瑜伽、冥想和养生功：带图示的动作、计时器和健身音乐。可在手机上练，也可投到电视屏幕。"),
+}
+# Biểu tượng giống trong app (k_f, a_f, f_f, m_f, p_f)
+ICONS = {'k_f':{0:'🎚️'}, 'f_f':{2:'💃',3:'🧔',4:'💪'}, 'm_f':{0:'💵',5:'🛍️'}, 'p_f':{1:'📱',2:'🎉'}}
+for _l,_n in NEW.items():
+    _c=C[_l]
+    for _k,_m in ICONS.items():
+        for _i,_ic in _m.items():
+            _c[_k][_i]=(_ic,)+tuple(_c[_k][_i][1:])
+    _c['f_f'][4]=(_c['f_f'][4][0],_c['f_f'][4][1],_n['fit'])
+    _c['san']=[_n['san']]; _c['stu']=[_n['stu']]
