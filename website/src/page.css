@@ -1,0 +1,32 @@
+
+.hero{padding:48px 16px 24px;max-width:1100px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.15;margin:.2em 0}
+.hero h1 span{color:var(--acc)}
+.hero p{font-size:1.15rem;color:var(--mute);max-width:720px;margin:0 auto 24px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--acc);color:#111;font-weight:700;text-decoration:none}
+.btn.o{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+.shot{width:100%;border-radius:14px;border:1px solid #2a2a30;display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+section{padding:40px 0;border-top:1px solid #1f1f24}
+section h2{font-size:1.8rem;margin:0 0 .3em;color:var(--fg)}
+section h2 small{display:block;font-size:.95rem;color:var(--acc);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.lead{color:var(--mute);max-width:760px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+.f{background:var(--card);border-radius:14px;padding:18px;border:1px solid #24242a}
+.f b{display:block;font-size:1.05rem;margin-bottom:4px}
+.f .i{font-size:1.6rem;line-height:1;margin-bottom:8px}
+.f p{margin:0;color:var(--mute);font-size:.95rem}
+.two{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
+@media(min-width:860px){.two{grid-template-columns:1fr 1fr}}
+.say{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.say span{background:#221d10;color:var(--acc);border:1px solid #4a3d18;border-radius:999px;padding:6px 12px;font-size:.92rem}
+.themes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:18px}
+.themes figure{margin:0}.themes figcaption{color:var(--mute);font-size:.9rem;margin-top:6px;text-align:center}
+.contact{background:linear-gradient(135deg,#2a2210,#141416);border:1px solid #4a3d18;border-radius:18px;padding:28px;text-align:center}
+.contact a.big{font-size:1.6rem;font-weight:800;color:var(--acc);text-decoration:none}
+nav a{text-decoration:none}
+.hero h1 span{white-space:nowrap}
+:lang(ko) h1,:lang(ko) h2{word-break:keep-all}
+@media(max-width:700px){nav a{display:none}nav b{margin:0 auto}}
+.contact a.mail{display:inline-block;font-size:clamp(1.1rem,5vw,1.5rem);font-weight:800;color:#111;background:var(--acc);padding:12px 22px;border-radius:999px;text-decoration:none;word-break:break-all}
