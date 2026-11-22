@@ -98,6 +98,8 @@ GO = {
  'zh': dict(go_h="在网页上直接唱歌和收听", go_san="进入歌唱舞台", go_stu="进入录音室", go_note="打开 Karaoke AI Home 应用的网页版，已自动登录你的账号。录音需要允许使用麦克风；戴耳机录音效果更干净。"),
 }
 for _l in T: T[_l].update(GO[_l])
+for _l,_v in {'vi': {'tools': 'Loa và ứng dụng', 'upd': 'Cập nhật phần mềm loa', 'updn': 'Tải phần mềm máy tính, cập nhật loa qua Wi-Fi bằng một nút bấm', 'setup': 'Cài loa mới', 'setupn': 'Loa mới mua: hướng dẫn bằng hình và phần mềm cài qua Wi-Fi', 'guiden': 'Bắt đầu nhanh và hướng dẫn chi tiết từng tính năng', 'nt_h': 'Thông báo qua email', 'nt_n': 'Mặc định chỉ gửi thư bảo mật (mã xác minh, điện thoại lạ kết nối loa, xoá tài khoản). Bật thêm loại bạn muốn nhận:', 'k_san': 'Hoạt động Sàn hát (tóm tắt mỗi ngày)', 'k_top': 'Bài của bạn lọt Top tuần', 'k_upd': 'Loa có bản cập nhật mới', 'k_promo': 'Khuyến mãi, sản phẩm mới'}, 'en': {'tools': 'Speaker & app', 'upd': 'Update speaker software', 'updn': 'Download the computer app and update the speaker over Wi-Fi with one click', 'setup': 'Set up a new speaker', 'setupn': 'New speaker: picture guide and Wi-Fi installer', 'guiden': 'Quick start and step-by-step guides for every feature', 'nt_h': 'Email notifications', 'nt_n': 'By default we only send security emails (verification codes, an unknown phone connecting to your speaker, account deletion). Turn on anything else you want:', 'k_san': 'Singing Stage activity (daily summary)', 'k_top': 'Your song made the weekly Top', 'k_upd': 'New speaker update available', 'k_promo': 'Promotions and new products'}, 'ja': {'tools': 'スピーカーとアプリ', 'upd': 'スピーカーのソフト更新', 'updn': 'パソコン用ソフトをダウンロードし、Wi-Fi経由でワンクリック更新', 'setup': '新しいスピーカーの設定', 'setupn': '新品スピーカー：画像ガイドとWi-Fiインストーラー', 'guiden': 'クイックスタートと各機能の詳しいガイド', 'nt_h': 'メール通知', 'nt_n': '通常はセキュリティメール（確認コード、不明なスマホの接続、アカウント削除）のみ送信します。受け取りたい通知をオンにしてください：', 'k_san': '歌のステージの活動（毎日のまとめ）', 'k_top': 'あなたの曲が週間トップ入り', 'k_upd': 'スピーカーの新しい更新', 'k_promo': 'キャンペーン・新製品'}, 'ko': {'tools': '스피커 및 앱', 'upd': '스피커 소프트웨어 업데이트', 'updn': '컴퓨터 프로그램을 내려받아 Wi-Fi로 한 번에 업데이트', 'setup': '새 스피커 설치', 'setupn': '새 스피커: 그림 안내와 Wi-Fi 설치 프로그램', 'guiden': '빠른 시작과 기능별 자세한 안내', 'nt_h': '이메일 알림', 'nt_n': '기본적으로 보안 메일(인증 코드, 낯선 휴대폰의 스피커 연결, 계정 삭제)만 보냅니다. 받고 싶은 알림을 켜세요:', 'k_san': '노래 무대 활동(매일 요약)', 'k_top': '내 노래가 주간 톱에 진입', 'k_upd': '스피커 새 업데이트', 'k_promo': '프로모션 및 신제품'}, 'fr': {'tools': 'Enceinte et application', 'upd': 'Mettre à jour l’enceinte', 'updn': 'Téléchargez le logiciel pour ordinateur et mettez à jour l’enceinte en Wi-Fi en un clic', 'setup': 'Installer une nouvelle enceinte', 'setupn': 'Enceinte neuve : guide illustré et installateur Wi-Fi', 'guiden': 'Démarrage rapide et guides détaillés de chaque fonction', 'nt_h': 'Notifications par e-mail', 'nt_n': 'Par défaut, nous n’envoyons que les e-mails de sécurité (codes de vérification, téléphone inconnu connecté à l’enceinte, suppression du compte). Activez ce que vous souhaitez recevoir :', 'k_san': 'Activité de la Scène (résumé quotidien)', 'k_top': 'Votre chanson est dans le Top de la semaine', 'k_upd': 'Nouvelle mise à jour de l’enceinte', 'k_promo': 'Promotions et nouveaux produits'}, 'zh': {'tools': '音箱与应用', 'upd': '更新音箱软件', 'updn': '下载电脑软件，通过 Wi-Fi 一键更新音箱', 'setup': '安装新音箱', 'setupn': '新音箱：图文指南与 Wi-Fi 安装程序', 'guiden': '快速入门和各项功能的详细指南', 'nt_h': '邮件通知', 'nt_n': '默认只发送安全邮件（验证码、陌生手机连接音箱、删除账号）。打开你想接收的通知：', 'k_san': '歌唱舞台动态（每日摘要）', 'k_top': '你的歌进入每周排行', 'k_upd': '音箱有新更新', 'k_promo': '优惠与新产品'}}.items(): T[_l].update(_v)
+for _l,(_a,_b,_c) in {'vi': ('Kích hoạt loa', 'Hướng dẫn sử dụng', 'Kích hoạt: cho máy tính hoặc điện thoại chung Wi-Fi với loa, rồi nhập mã 4 số hiện trên TV.'), 'en': ('Activate speaker', 'User guide', 'To activate: put your computer or phone on the same Wi-Fi as the speaker, then enter the 4-digit code shown on the TV.'), 'ja': ('スピーカーを有効化', '使い方ガイド', '有効化：パソコンやスマホをスピーカーと同じWi-Fiにつなぎ、テレビに表示される4桁のコードを入力します。'), 'ko': ('스피커 활성화', '사용 설명서', '활성화: 컴퓨터나 휴대폰을 스피커와 같은 Wi-Fi에 연결한 뒤 TV에 표시된 4자리 코드를 입력하세요.'), 'fr': ('Activer l’enceinte', 'Guide d’utilisation', 'Activation : connectez votre ordinateur ou téléphone au même Wi-Fi que l’enceinte, puis saisissez le code à 4 chiffres affiché sur la TV.'), 'zh': ('激活音箱', '使用指南', '激活：让电脑或手机与音箱连接同一个 Wi-Fi，然后输入电视上显示的 4 位数代码。')}.items(): T[_l].update(go_spk=_a,go_guide=_b,go_spkn=_c)
 for _l,_v in {'vi': 'Tài khoản của tôi', 'en': 'My account', 'ja': 'マイアカウント', 'ko': '내 계정', 'fr': 'Mon compte', 'zh': '我的账号'}.items(): T[_l]['my']=_v
 for _l,_v in {'vi': 'Đã có mã', 'en': 'I have a code', 'ja': 'コードを持っている', 'ko': '코드가 있어요', 'fr': 'J’ai déjà un code', 'zh': '我已有验证码'}.items(): T[_l]['have']=_v
 
@@ -112,6 +114,10 @@ CSS = """
 .acc .song .t{flex:1;min-width:0}.acc .song .t b{display:block}.acc .song small{color:var(--mute);display:block}
 .acc .player{position:sticky;top:0;z-index:5;background:#0b0b0c;padding:8px 0}.acc .player .v{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}.acc .player .v iframe,.acc .player .v>div{position:absolute;inset:0;width:100%;height:100%;border:0}
 .acc .hide{display:none!important}.acc .mute{color:var(--mute)}
+"""
+
+CSS += """.acc a.li{display:flex;gap:14px;align-items:center;padding:12px 4px;border-top:1px solid #2a2a30;color:inherit;text-decoration:none}.acc a.li:first-of-type{border-top:0}.acc a.li i{font-style:normal;font-size:1.6rem;width:2rem;text-align:center}.acc a.li span{flex:1}.acc a.li b{display:block}.acc a.li small{color:var(--mute)}.acc a.li:hover b{color:var(--acc)}
+.acc .sw{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #2a2a30;cursor:pointer}.acc .sw span{flex:1}.acc .sw input{width:22px;height:22px;accent-color:var(--acc)}
 """
 
 JS = r"""
@@ -141,7 +147,7 @@ function logout(){tok=null;try{localStorage.removeItem('kah_acct')}catch(e){}hdr
 $('bOut').onclick=logout;
 function fmt(t){var d=new Date(t);return d.toLocaleDateString(LG==='vi'?'vi-VN':LG)}
 var me=null;
-function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');hdr(a.name||a.email.split('@')[0]);$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
+function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');notifs(a.notif);hdr(a.name||a.email.split('@')[0]);$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
   if(a.warranty&&a.warranty.start){$('uW').innerHTML=esc(L.wcode)+': <b>'+esc(a.warranty.code)+'</b><br>'+esc(L.wend)+': <b>'+fmt(a.warranty.start+365*864e5)+'</b>'}else $('uW').textContent=L.nowarranty;
   api('/w/san/me').then(function(s){setAv(s.uid,s.av);if(!a.name&&s.name)$('iName').value=s.name});songs()}).catch(function(){msg('m1',L.e_net,1)})}
 function setAv(uid,av){var e=$('uAv');if(av){e.style.backgroundImage='url('+A+'/w/san/av?u='+encodeURIComponent(uid)+'&v='+av+')';e.textContent=''}else{e.style.backgroundImage='';e.textContent='🙂'}}
@@ -174,7 +180,9 @@ function sync(){if(!yt||!yt.getPlayerState)return;var st=yt.getPlayerState(),vt=
   tracks.forEach(function(t){var tgt=vt+t.d;if(st!==1||tgt<0||(t.a.duration&&tgt>t.a.duration)){if(!t.a.paused)t.a.pause();return}
     if(Math.abs(t.a.currentTime-tgt)>0.3)t.a.currentTime=tgt;if(t.a.paused)t.a.play().catch(function(){})})}
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
-$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};
+$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoSpk').onclick=function(e){e.preventDefault();goApp('spk')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
+function notifs(n){n=n||{};$('notifs').innerHTML=['san','top','upd','promo'].map(function(k){return '<label class="sw"><span>'+esc(L['k_'+k])+'</span><input type="checkbox" data-k="'+k+'"'+(n[k]?' checked':'')+'></label>'}).join('')}
+$('notifs').onchange=function(){var n={};[].forEach.call($('notifs').querySelectorAll('input'),function(i){n[i.dataset.k]=i.checked?1:0});api('/w/acct/notif',{json:{notif:n}}).then(function(j){msg('m4',j.ok?L.saved:L.e_net,!j.ok)})};
 if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');
 })();
 """
@@ -182,11 +190,18 @@ if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode(
 def page(l, e):
     t = T[l]
     import json
+    t['cai'] = ('/' if l=='vi' else '/%s/'%l)+'cai-loa/'
     return ('<div class="acc"><h1 id="accH">%s</h1><p class="lead">%s</p>'
      '<div id="stEmail" class="card"><label>%s</label><input id="iEmail" type="email" autocomplete="email" inputmode="email"><button id="bSend">%s</button><button class="o" id="bHave" style="margin-left:8px">%s</button><div id="m1" class="msg"></div><p class="mute" style="font-size:.9rem">%s</p></div>'
      '<div id="stCode" class="card hide"><div id="m2" class="msg"></div><label>%s</label><input id="iCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><div class="row"><button id="bLogin">%s</button><button class="o" id="bResend">%s</button><button class="o" id="bOther">%s</button></div></div>'
      '<div id="stIn" class="hide"><div class="card"><div class="me"><div class="av" id="uAv">🙂</div><div><div class="mute">%s</div><b id="uName" style="font-size:1.3rem"></b><div class="mute" id="uMail"></div></div></div></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2><div class="row"><button id="bGoSan">🎪 %s</button><button id="bGoStu">🎙️ %s</button></div><p class="mute" style="font-size:.9rem;margin-bottom:0">%s</p></div>'
+     '<div class="card"><h2 style="margin-top:0">%s</h2>'
+     '<a class="li" id="bGoSpk" href="#"><i>🔑</i><span><b>%s</b><small>%s</small></span></a>'
+     '<a class="li" href="%s"><i>🔄</i><span><b>%s</b><small>%s</small></span></a>'
+     '<a class="li" href="%s"><i>🧰</i><span><b>%s</b><small>%s</small></span></a>'
+     '<a class="li" id="bGoGuide" href="#"><i>📘</i><span><b>%s</b><small>%s</small></span></a></div>'
+     '<div class="card"><h2 style="margin-top:0">📬 %s</h2><p class="mute" style="font-size:.9rem">%s</p><div id="notifs"></div><div id="m4" class="msg"></div></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2><div id="player" class="player hide"><b id="pTitle"></b><div class="v"><div id="yt"></div></div><div class="row" style="margin-top:8px"><label class="mute">%s</label><input id="vol" type="range" min="0" max="100" value="90" style="flex:1;margin:0"><button class="o" id="bStop">%s</button></div></div><div id="songs"></div></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2><label>%s</label><div class="row"><input id="iName" maxlength="30" style="flex:1;margin:0"><button id="bName">%s</button></div>'
      '<p style="margin:14px 0 6px">%s</p><div class="row"><label class="o" style="display:inline-block;padding:11px 16px;border-radius:12px;background:#222;border:1px solid #333;cursor:pointer;font-weight:700">%s<input id="fAv" type="file" accept="image/*" class="hide"></label><button class="o" id="bRmAv">%s</button></div><div id="m3" class="msg"></div>'
@@ -194,5 +209,5 @@ def page(l, e):
      '<div class="row" style="margin-top:16px"><button class="o" id="bOut">%s</button><button class="r" id="bDel">%s</button></div></div></div></div>'
      '<script>window.ACC_L=%s;window.ACC_LANG=%s;</script><script src="/account.js"></script>') % (
         e(t['h']), e(t['lead']), e(t['email']), e(t['send']), e(t['have']), e(t['note']), e(t['code']), e(t['login']), e(t['resend']), e(t['other']),
-        e(t['hi']), e(t['go_h']), e(t['go_san']), e(t['go_stu']), e(t['go_note']), e(t['songs']), e(t['voice']), e(t['stop']), e(t['acct']), e(t['name']), e(t['save']), e(t['avatar']), e(t['pick']), e(t['rmav']),
+        e(t['hi']), e(t['go_h']), e(t['go_san']), e(t['go_stu']), e(t['go_note']), e(t['tools']), e(t['go_spk']), e(t['go_spkn']), t['cai'], e(t['upd']), e(t['updn']), t['cai'], e(t['setup']), e(t['setupn']), e(t['go_guide']), e(t['guiden']), e(t['nt_h']), e(t['nt_n']), e(t['songs']), e(t['voice']), e(t['stop']), e(t['acct']), e(t['name']), e(t['save']), e(t['avatar']), e(t['pick']), e(t['rmav']),
         e(t['warranty']), e(t['logout']), e(t['delacct']), json.dumps(t, ensure_ascii=False).replace('</', '<\\/'), json.dumps(l))

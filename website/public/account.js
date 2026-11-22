@@ -25,7 +25,7 @@ function logout(){tok=null;try{localStorage.removeItem('kah_acct')}catch(e){}hdr
 $('bOut').onclick=logout;
 function fmt(t){var d=new Date(t);return d.toLocaleDateString(LG==='vi'?'vi-VN':LG)}
 var me=null;
-function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');hdr(a.name||a.email.split('@')[0]);$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
+function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');notifs(a.notif);hdr(a.name||a.email.split('@')[0]);$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
   if(a.warranty&&a.warranty.start){$('uW').innerHTML=esc(L.wcode)+': <b>'+esc(a.warranty.code)+'</b><br>'+esc(L.wend)+': <b>'+fmt(a.warranty.start+365*864e5)+'</b>'}else $('uW').textContent=L.nowarranty;
   api('/w/san/me').then(function(s){setAv(s.uid,s.av);if(!a.name&&s.name)$('iName').value=s.name});songs()}).catch(function(){msg('m1',L.e_net,1)})}
 function setAv(uid,av){var e=$('uAv');if(av){e.style.backgroundImage='url('+A+'/w/san/av?u='+encodeURIComponent(uid)+'&v='+av+')';e.textContent=''}else{e.style.backgroundImage='';e.textContent='🙂'}}
@@ -58,6 +58,8 @@ function sync(){if(!yt||!yt.getPlayerState)return;var st=yt.getPlayerState(),vt=
   tracks.forEach(function(t){var tgt=vt+t.d;if(st!==1||tgt<0||(t.a.duration&&tgt>t.a.duration)){if(!t.a.paused)t.a.pause();return}
     if(Math.abs(t.a.currentTime-tgt)>0.3)t.a.currentTime=tgt;if(t.a.paused)t.a.play().catch(function(){})})}
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
-$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};
+$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoSpk').onclick=function(e){e.preventDefault();goApp('spk')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
+function notifs(n){n=n||{};$('notifs').innerHTML=['san','top','upd','promo'].map(function(k){return '<label class="sw"><span>'+esc(L['k_'+k])+'</span><input type="checkbox" data-k="'+k+'"'+(n[k]?' checked':'')+'></label>'}).join('')}
+$('notifs').onchange=function(){var n={};[].forEach.call($('notifs').querySelectorAll('input'),function(i){n[i.dataset.k]=i.checked?1:0});api('/w/acct/notif',{json:{notif:n}}).then(function(j){msg('m4',j.ok?L.saved:L.e_net,!j.ok)})};
 if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');
 })();
