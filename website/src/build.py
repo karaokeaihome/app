@@ -5,6 +5,7 @@ import os, html, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import C, LANGS, NAMES, SAY, PRICE, PRICE_LABEL, PRICE_NOTE, UI
 from pages import P, APK, IOS, SITE, LEGAL
+from legal import L as LG, DEL_ID
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.path.join(HERE,'..','public') if os.path.isdir(os.path.join(HERE,'..','public')) else os.path.join(HERE,'..','website-cai-dat','public')  # repo GitHub: website/src -> website/public
@@ -37,6 +38,7 @@ CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
 .dlc{background:var(--card);border:1px solid #2a2a30;border-radius:18px;padding:20px}.dlc h2{margin:0 0 12px}
 .qr{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.qr img{width:150px;height:150px;background:#fff;border-radius:12px;padding:8px;margin:0}
 .dlc ol{padding-left:1.2em}.dlc li{margin:6px 0}.note{font-size:.9rem;color:var(--mute);border-left:3px solid var(--acc);padding-left:10px}
+.lgrow{margin:10px 0;padding:14px 16px}.lgrow dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}.lgrow dt{color:var(--mute)}.lgrow dd{margin:0}
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
@@ -108,16 +110,30 @@ def download(l):
         card(p['and_h'],p['and_btn'],APK,'qr-android.svg',p['and_steps']),card(p['ios_h'],p['ios_btn'],IOS,'qr-iphone.svg',p['ios_steps'],p['ios_note']))
     return simple(l,'download/',p['dl'],b)
 def support(l):
-    p=P[l]
+    p=P[l]; g=LG[l]; qa=list(p['qa'][:-1])+[g['del_q']]
     b='<h1>%s</h1><p>%s</p><div class="card"><p><b>Email:</b> <a href="mailto:info@karaokeaihome.com">info@karaokeaihome.com</a></p></div><h2>%s</h2>%s'%(
-        e(p['sup']),e(p['sup_lead']),e(p['faq']),''.join('<p><b>%s</b> %s</p>'%(e(q),a.format(dl=url(l,'download/'))) for q,a in p['qa']))
+        e(p['sup']),e(p['sup_lead']),e(p['faq']),''.join('<p><b>%s</b> %s</p>'%(e(q),a.format(dl=url(l,'download/'))) for q,a in qa))
+    b+='<h2 id="%s">%s</h2><ul>%s</ul>'%(DEL_ID,e(g['del_h']),''.join('<li>%s</li>'%e(x) for x in g['del_b']))
     return simple(l,'support/',p['sup'],b)
+def blocks(l,secs):
+    g=LG[l]; out=''
+    for h,items in secs:
+        out+='<h2>%s</h2>'%e(h)
+        for it in items:
+            if isinstance(it,tuple) and it[0]=='rows':
+                out+=''.join('<div class="card lgrow"><b>%s</b><dl><dt>%s</dt><dd>%s</dd><dt>%s</dt><dd>%s</dd><dt>%s</dt><dd>%s</dd></dl></div>'%(
+                    e(r[0]),e(g['cols'][0]),e(r[1]),e(g['cols'][1]),e(r[2]),e(g['cols'][2]),e(r[3])) for r in it[1])
+            elif isinstance(it,list): out+='<ul>%s</ul>'%''.join('<li>%s</li>'%x.format(legal=e(LEGAL)) for x in it)
+            else: out+='<p>%s</p>'%it.format(legal=e(LEGAL))
+    return out
 def privacy(l):
     p=P[l]
-    b='<h1>%s</h1><p class="mute">%s</p>%s'%(e(p['pv_title']),e(p['pv_eff']),''.join('<h2>%s</h2><p>%s</p>'%(e(h),e(t.format(legal=LEGAL))) for h,t in p['pv']))
+    b='<h1>%s</h1><p class="mute">%s</p>%s'%(e(p['pv_title']),e(p['pv_eff']),blocks(l,LG[l]['pv']))
     return simple(l,'privacy/',p['pv_title'],b,True)
 def terms(l):
-    p=P[l]; return simple(l,'terms/',p['tm_title'],'<h1>%s</h1><p>%s</p>'%(e(p['tm_title']),e(p['tm'].format(legal=LEGAL))),True)
+    p=P[l]
+    b='<h1>%s</h1><p class="mute">%s</p>%s'%(e(p['tm_title']),e(p['pv_eff']),blocks(l,LG[l]['tm']))
+    return simple(l,'terms/',p['tm_title'],b,True)
 os.makedirs(os.path.join(OUT,'img'),exist_ok=True)
 qr(SITE+APK,'qr-android.svg'); qr(SITE+IOS,'qr-iphone.svg')
 n=0
