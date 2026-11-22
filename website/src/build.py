@@ -7,6 +7,7 @@ from content import C, LANGS, NAMES, SAY, PRICE, PRICE_LABEL, PRICE_NOTE, UI
 from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
+from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
 from cailoa import T as CL, UI as CLUI, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -45,7 +46,7 @@ CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
 .gs{display:grid;gap:14px;grid-template-columns:1fr;margin:14px 0}.gs figure{margin:0;background:var(--card);border:1px solid #2a2a30;border-radius:16px;padding:12px}
 .gs figure img{width:100%;border-radius:10px;display:block;margin:0}.gs figcaption{margin-top:8px}.gs figcaption b{color:var(--acc)}.gs .n{color:var(--acc);font-weight:800;margin-right:6px}
 @media(min-width:860px){.gs.two{grid-template-columns:1fr 1fr}}
-"""+RCSS+"""
+"""+RCSS+ACSS+"""
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
@@ -68,7 +69,7 @@ def head(l,c,title,desc,path,noidx=False):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:image" content="https://karaokeaihome.com/img/home.jpg">
 {alts}{'<meta name="robots" content="noindex">' if noidx else ''}<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><style>{CSS}</style></head><body>
-<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a></nav>
+<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav>
 <div class="lang">{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div>'''
 def foot(l,c):
     return f'''<footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a> · <a href="{url(l,'support/')}">{e(c['legal'][2])}</a></footer></body></html>'''
@@ -152,6 +153,8 @@ def blocks(l,secs):
             elif isinstance(it,list): out+='<ul>%s</ul>'%''.join('<li>%s</li>'%x.format(legal=e(LEGAL)) for x in it)
             else: out+='<p>%s</p>'%it.format(legal=e(LEGAL))
     return out
+def account(l):
+    return simple(l,'account/',AT[l]['h'],acc_page(l,e),True)
 def privacy(l):
     p=P[l]
     b='<h1>%s</h1><p class="mute">%s</p>%s'%(e(p['pv_title']),e(p['pv_eff']),blocks(l,LG[l]['pv']))
@@ -167,7 +170,7 @@ for l in LANGS:
     d=OUT if l=='vi' else os.path.join(OUT,l)
     os.makedirs(d,exist_ok=True)
     open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(home(l)); n+=1
-    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page)):
+    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page),('account',account)):
         p=os.path.join(d,sub); os.makedirs(p,exist_ok=True)
         open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(fn(l)); n+=1
     for g,items in GROUPS:
@@ -175,6 +178,7 @@ for l in LANGS:
             p=os.path.join(d,'f',slug); os.makedirs(p,exist_ok=True)
             open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(detail(l,slug,g,key,idx,items)); n+=1
 print('pages',n)
+open(os.path.join(OUT,'account.js'),'w',encoding='utf-8').write(AJS)
 
 # sitemap (khong co privacy/terms), robots, 404, chuyen huong iPhone
 urls=[]

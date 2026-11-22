@@ -83,9 +83,20 @@ nav a{text-decoration:none}
 .badge{display:inline-block;margin:10px 0 0;padding:6px 12px;border-radius:999px;border:1px solid #4a3d18;background:#2a2210;color:var(--acc);font-weight:700;font-size:.9rem}
 .steps{counter-reset:s;list-style:none;padding:0}.steps li{counter-increment:s;position:relative;padding:8px 0 8px 40px}.steps li:before{content:counter(s);position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center}
 
+.acc{max-width:760px;margin:0 auto;padding:16px}.acc .card{margin:14px 0}
+.acc input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:12px;border:1px solid #333;background:#111;color:var(--fg);font-size:1.05rem;margin:6px 0 10px}
+.acc button{cursor:pointer;border:0;border-radius:12px;padding:11px 16px;font-weight:700;font-size:1rem;background:var(--acc);color:#111}
+.acc button.o{background:#222;color:var(--fg);border:1px solid #333}.acc button.r{background:#5a1d22;color:#fff}
+.acc .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.acc .msg{min-height:1.4em;color:var(--acc);margin:6px 0}.acc .err{color:#ff8a8a}
+.acc .me{display:flex;gap:14px;align-items:center}.acc .av{width:64px;height:64px;border-radius:50%;background:#222 center/cover;flex:none;display:flex;align-items:center;justify-content:center;font-size:28px}
+.acc .song{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #222}.acc .song img{width:112px;height:63px;object-fit:cover;border-radius:10px;flex:none}
+.acc .song .t{flex:1;min-width:0}.acc .song .t b{display:block}.acc .song small{color:var(--mute);display:block}
+.acc .player{position:sticky;top:0;z-index:5;background:#0b0b0c;padding:8px 0}.acc .player .v{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}.acc .player .v iframe,.acc .player .v>div{position:absolute;inset:0;width:100%;height:100%;border:0}
+.acc .hide{display:none!important}.acc .mute{color:var(--mute)}
+
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 </style></head><body>
-<nav><b><a href="/zh/" style="color:var(--fg)">Karaoke AI Home</a></b><a href="/zh/#tinh-nang">全部功能</a><a href="/zh/download/">下载App</a><a href="/zh/#lien-he">联系我们</a><a href="/zh/support/">支持</a></nav>
+<nav><b><a href="/zh/" style="color:var(--fg)">Karaoke AI Home</a></b><a href="/zh/#tinh-nang">全部功能</a><a href="/zh/download/">下载App</a><a href="/zh/#lien-he">联系我们</a><a href="/zh/support/">支持</a><a href="/zh/account/">登录</a></nav>
 <div class="lang"><a href="/f/lich-thoi-tiet/" class="" lang="vi">Tiếng Việt</a><a href="/en/f/lich-thoi-tiet/" class="" lang="en">English</a><a href="/ja/f/lich-thoi-tiet/" class="" lang="ja">日本語</a><a href="/ko/f/lich-thoi-tiet/" class="" lang="ko">한국어</a><a href="/fr/f/lich-thoi-tiet/" class="" lang="fr">Français</a><a href="/zh/f/lich-thoi-tiet/" class="on" lang="zh">中文</a></div>
 <main class="detail"><a class="bk" href="/zh/#tinh-nang">← 全部功能</a>
 <div class="big">🗓️</div><div class="tag" style="margin-top:14px">AI助手Lambo</div><h1>农历 · 天气 · 运势</h1><p class="d">主屏幕显示时间、当地天气、农历和公历以及吉日。</p><img class="shot" src="/img/zh/home.jpg" alt="农历 · 天气 · 运势" loading="lazy">

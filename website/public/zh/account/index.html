@@ -1,0 +1,100 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>登录账户 – Karaoke AI Home</title><meta name="description" content="登录账户"><meta property="og:title" content="登录账户 – Karaoke AI Home"><meta property="og:description" content="登录账户"><meta property="og:image" content="https://karaokeaihome.com/img/home.jpg">
+<link rel="alternate" hreflang="vi" href="https://karaokeaihome.com/account/"><link rel="alternate" hreflang="en" href="https://karaokeaihome.com/en/account/"><link rel="alternate" hreflang="ja" href="https://karaokeaihome.com/ja/account/"><link rel="alternate" hreflang="ko" href="https://karaokeaihome.com/ko/account/"><link rel="alternate" hreflang="fr" href="https://karaokeaihome.com/fr/account/"><link rel="alternate" hreflang="zh" href="https://karaokeaihome.com/zh/account/"><meta name="robots" content="noindex"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><style>
+.hero{padding:48px 16px 24px;max-width:1100px;margin:0 auto;text-align:center}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.15;margin:.2em 0}
+.hero h1 span{color:var(--acc)}
+.hero p{font-size:1.15rem;color:var(--mute);max-width:720px;margin:0 auto 24px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--acc);color:#111;font-weight:700;text-decoration:none}
+.btn.o{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+.shot{width:100%;border-radius:14px;border:1px solid #2a2a30;display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+section{padding:40px 0;border-top:1px solid #1f1f24}
+section h2{font-size:1.8rem;margin:0 0 .3em;color:var(--fg)}
+section h2 small{display:block;font-size:.95rem;color:var(--acc);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.lead{color:var(--mute);max-width:760px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+.f{background:var(--card);border-radius:14px;padding:18px;border:1px solid #24242a}
+.f b{display:block;font-size:1.05rem;margin-bottom:4px}
+.f .i{font-size:1.6rem;line-height:1;margin-bottom:8px}
+.f p{margin:0;color:var(--mute);font-size:.95rem}
+.two{display:grid;gap:24px;grid-template-columns:1fr;align-items:center}
+@media(min-width:860px){.two{grid-template-columns:1fr 1fr}}
+.say{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.say span{background:#221d10;color:var(--acc);border:1px solid #4a3d18;border-radius:999px;padding:6px 12px;font-size:.92rem}
+.themes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:18px}
+.themes figure{margin:0}.themes figcaption{color:var(--mute);font-size:.9rem;margin-top:6px;text-align:center}
+.contact{background:linear-gradient(135deg,#2a2210,#141416);border:1px solid #4a3d18;border-radius:18px;padding:28px;text-align:center}
+.contact a.big{font-size:1.6rem;font-weight:800;color:var(--acc);text-decoration:none}
+nav a{text-decoration:none}
+.hero h1 span{white-space:nowrap}
+:lang(ko) h1,:lang(ko) h2{word-break:keep-all}
+@media(max-width:700px){nav a{display:none}nav b{margin:0 auto}}
+.contact a.mail{display:inline-block;font-size:clamp(1.1rem,5vw,1.5rem);font-weight:800;color:#111;background:var(--acc);padding:12px 22px;border-radius:999px;text-decoration:none;word-break:break-all}
+
+.lang{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:8px 16px 0;max-width:1100px;margin:0 auto}
+.lang a{font-size:.85rem;padding:4px 10px;border-radius:999px;border:1px solid #2a2a30;color:var(--mute);text-decoration:none}
+.lang a.on{border-color:var(--acc);color:var(--acc)}
+.price{max-width:520px;margin:24px auto 0;background:linear-gradient(135deg,#2a2210,#141416);border:1px solid #4a3d18;border-radius:18px;padding:18px;text-align:center}
+.price .l{color:var(--mute);font-size:.95rem}.price .v{font-size:2.3rem;font-weight:800;color:var(--acc);line-height:1.2}.price .n{color:var(--mute);font-size:.9rem}
+.grp{margin:28px 0 6px;color:var(--acc);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.icons{display:grid;gap:14px 10px;grid-template-columns:repeat(4,1fr)}
+@media(min-width:700px){.icons{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:1000px){.icons{grid-template-columns:repeat(8,1fr)}}
+.ic{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--fg);text-align:center;font-size:.82rem;line-height:1.25}
+.ic .b{width:64px;height:64px;border-radius:18px;background:linear-gradient(160deg,#26221a,#141416);border:1px solid #3a3220;display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:6px;transition:transform .15s,border-color .15s}
+.ic:hover .b,.ic:focus .b{transform:translateY(-2px);border-color:var(--acc)}
+.tap{color:var(--mute);text-align:center;font-size:.9rem;margin:22px 0 0}
+.detail{max-width:820px;margin:0 auto;padding:16px}
+.detail .bk{display:inline-block;margin:8px 0 18px;text-decoration:none}
+.detail .big{width:96px;height:96px;border-radius:26px;background:linear-gradient(160deg,#2a2210,#141416);border:1px solid #4a3d18;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.detail h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:16px 0 4px}
+.detail .tag{color:var(--acc);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}
+.detail p.d{font-size:1.15rem;color:var(--fg);opacity:.9}
+.detail img{margin:20px 0}
+.dlg{display:grid;gap:18px;grid-template-columns:1fr}@media(min-width:760px){.dlg{grid-template-columns:1fr 1fr}}
+.dlc{background:var(--card);border:1px solid #2a2a30;border-radius:18px;padding:20px}.dlc h2{margin:0 0 12px}
+.qr{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.qr img{width:150px;height:150px;background:#fff;border-radius:12px;padding:8px;margin:0}
+.dlc ol{padding-left:1.2em}.dlc li{margin:6px 0}.note{font-size:.9rem;color:var(--mute);border-left:3px solid var(--acc);padding-left:10px}
+.lgrow{margin:10px 0;padding:14px 16px}.lgrow dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.92rem}.lgrow dt{color:var(--mute)}.lgrow dd{margin:0}
+.pcc{margin-top:18px}.pcc .btns{justify-content:flex-start;margin:6px 0 4px}.pcc ol{margin-top:12px}
+.gs{display:grid;gap:14px;grid-template-columns:1fr;margin:14px 0}.gs figure{margin:0;background:var(--card);border:1px solid #2a2a30;border-radius:16px;padding:12px}
+.gs figure img{width:100%;border-radius:10px;display:block;margin:0}.gs figcaption{margin-top:8px}.gs figcaption b{color:var(--acc)}.gs .n{color:var(--acc);font-weight:800;margin-right:6px}
+@media(min-width:860px){.gs.two{grid-template-columns:1fr 1fr}}
+
+.richwrap{display:grid;gap:22px;align-items:start;margin-top:18px}@media(min-width:800px){.richwrap{grid-template-columns:300px 1fr}}
+.mock{width:280px;margin:0 auto;background:#0b0b0c;border:8px solid #222;border-radius:36px;padding:16px 12px 18px;box-shadow:0 10px 40px #0008;font-size:13px}
+.mock .mh{font-weight:800;color:#f3d77a;font-size:17px;margin:2px 4px 10px}
+.mock .mv{border-radius:12px;background:linear-gradient(135deg,#3a1c4a,#101018);padding:14px 12px;display:flex;flex-direction:column;gap:4px;min-height:96px}
+.mock .mv b{color:#fff8;letter-spacing:.2em;font-size:12px}.mock .mv small{color:#fff;font-weight:700;font-size:14px}.mock .mv em{color:#f3d77a;font-style:normal}
+.mock .wave{display:flex;gap:3px;align-items:center;height:44px;margin:10px 4px}.mock .wave i{flex:1;background:#d4af37;border-radius:2px;height:30%}
+.mock .wave i:nth-child(3n){height:80%}.mock .wave i:nth-child(4n+1){height:55%}.mock .wave i:nth-child(5n+2){height:95%}.mock .wave i:nth-child(7n){height:40%}
+.mock .chips{display:flex;gap:6px;margin:4px 0 8px}.mock .chips span{flex:1;text-align:center;background:#1f1f23;border-radius:10px;padding:6px}.mock .chips .on{background:#d4af37;color:#111;font-weight:700}
+.mock .kn{display:flex;align-items:center;gap:8px;margin:6px 2px}.mock .kn span{width:64px;color:#9b978f}.mock .kn i{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,#d4af37 var(--v),#2a2a2f var(--v))}
+.mock .mrec{margin:12px 0 8px;background:#e5484d;color:#fff;text-align:center;border-radius:14px;padding:11px;font-weight:800;font-size:15px}
+.mock .mrow{display:flex;gap:6px}.mock .mrow span{flex:1;text-align:center;background:#1f1f23;border-radius:12px;padding:9px 4px;font-size:12px}.mock .mrow .g{background:#d4af37;color:#111;font-weight:700}
+.mock .tabs4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}.mock .tabs4 span{background:#17171a;border-radius:10px;padding:6px 2px;text-align:center;font-size:11px;line-height:1.2}.mock .tabs4 .on{background:#d4af37;color:#111;font-weight:700}
+.mock .pc{display:flex;gap:8px;align-items:center;background:#17171a;border-radius:14px;padding:8px;margin-top:8px}
+.mock .rk{color:#f3d77a;font-size:20px;width:18px;text-align:center}.mock .th{width:70px;height:42px;border-radius:8px;color:#fff6;font-size:9px;font-weight:800;letter-spacing:.15em;display:flex;align-items:center;justify-content:center;flex:none}
+.mock .pt{min-width:0}.mock .pt b{display:block;font-size:13px}.mock .pt small{display:block;color:#9b978f;font-size:11px}.mock .du{color:#3ecf8e}
+.subf{display:grid;gap:12px}@media(min-width:560px){.subf{grid-template-columns:1fr 1fr}}
+.subf .card{display:flex;gap:12px;padding:14px;margin:0}.subf .si{font-size:1.6rem;line-height:1;flex:none}.subf b{display:block;margin-bottom:3px}.subf p{margin:0;font-size:.95rem;opacity:.9}
+.badge{display:inline-block;margin:10px 0 0;padding:6px 12px;border-radius:999px;border:1px solid #4a3d18;background:#2a2210;color:var(--acc);font-weight:700;font-size:.9rem}
+.steps{counter-reset:s;list-style:none;padding:0}.steps li{counter-increment:s;position:relative;padding:8px 0 8px 40px}.steps li:before{content:counter(s);position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#111;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+.acc{max-width:760px;margin:0 auto;padding:16px}.acc .card{margin:14px 0}
+.acc input{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:12px;border:1px solid #333;background:#111;color:var(--fg);font-size:1.05rem;margin:6px 0 10px}
+.acc button{cursor:pointer;border:0;border-radius:12px;padding:11px 16px;font-weight:700;font-size:1rem;background:var(--acc);color:#111}
+.acc button.o{background:#222;color:var(--fg);border:1px solid #333}.acc button.r{background:#5a1d22;color:#fff}
+.acc .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.acc .msg{min-height:1.4em;color:var(--acc);margin:6px 0}.acc .err{color:#ff8a8a}
+.acc .me{display:flex;gap:14px;align-items:center}.acc .av{width:64px;height:64px;border-radius:50%;background:#222 center/cover;flex:none;display:flex;align-items:center;justify-content:center;font-size:28px}
+.acc .song{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid #222}.acc .song img{width:112px;height:63px;object-fit:cover;border-radius:10px;flex:none}
+.acc .song .t{flex:1;min-width:0}.acc .song .t b{display:block}.acc .song small{color:var(--mute);display:block}
+.acc .player{position:sticky;top:0;z-index:5;background:#0b0b0c;padding:8px 0}.acc .player .v{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}.acc .player .v iframe,.acc .player .v>div{position:absolute;inset:0;width:100%;height:100%;border:0}
+.acc .hide{display:none!important}.acc .mute{color:var(--mute)}
+
+.gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
+</style></head><body>
+<nav><b><a href="/zh/" style="color:var(--fg)">Karaoke AI Home</a></b><a href="/zh/#tinh-nang">全部功能</a><a href="/zh/download/">下载App</a><a href="/zh/#lien-he">联系我们</a><a href="/zh/support/">支持</a><a href="/zh/account/">登录</a></nav>
+<div class="lang"><a href="/account/" class="" lang="vi">Tiếng Việt</a><a href="/en/account/" class="" lang="en">English</a><a href="/ja/account/" class="" lang="ja">日本語</a><a href="/ko/account/" class="" lang="ko">한국어</a><a href="/fr/account/" class="" lang="fr">Français</a><a href="/zh/account/" class="on" lang="zh">中文</a></div><main><div class="acc"><h1>登录账户</h1><p class="lead">登录后可以重听和管理你发布到歌唱舞台的歌曲。</p><div id="stEmail" class="card"><label>邮箱</label><input id="iEmail" type="email" autocomplete="email" inputmode="email"><button id="bSend">发送登录验证码</button><div id="m1" class="msg"></div><p class="mute" style="font-size:.9rem">还没有账户？账户只能在连接音箱后，在 Karaoke AI Home 应用中创建。</p></div><div id="stCode" class="card hide"><div id="m2" class="msg"></div><label>邮件中的 6 位验证码</label><input id="iCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><div class="row"><button id="bLogin">登录</button><button class="o" id="bResend">重新发送</button><button class="o" id="bOther">换个邮箱</button></div></div><div id="stIn" class="hide"><div class="card"><div class="me"><div class="av" id="uAv">🙂</div><div><div class="mute">你好</div><b id="uName" style="font-size:1.3rem"></b><div class="mute" id="uMail"></div></div></div></div><div class="card"><h2 style="margin-top:0">在网页上直接唱歌和收听</h2><div class="row"><button id="bGoSan">🎪 进入歌唱舞台</button><button id="bGoStu">🎙️ 进入录音室</button></div><p class="mute" style="font-size:.9rem;margin-bottom:0">打开 Karaoke AI Home 应用的网页版，已自动登录你的账号。录音需要允许使用麦克风；戴耳机录音效果更干净。</p></div><div class="card"><h2 style="margin-top:0">我在歌唱舞台的歌曲</h2><div id="player" class="player hide"><b id="pTitle"></b><div class="v"><div id="yt"></div></div><div class="row" style="margin-top:8px"><label class="mute">人声音量</label><input id="vol" type="range" min="0" max="100" value="90" style="flex:1;margin:0"><button class="o" id="bStop">■ 停止</button></div></div><div id="songs"></div></div><div class="card"><h2 style="margin-top:0">账户</h2><label>显示名称</label><div class="row"><input id="iName" maxlength="30" style="flex:1;margin:0"><button id="bName">保存</button></div><p style="margin:14px 0 6px">头像</p><div class="row"><label class="o" style="display:inline-block;padding:11px 16px;border-radius:12px;background:#222;border:1px solid #333;cursor:pointer;font-weight:700">选择图片<input id="fAv" type="file" accept="image/*" class="hide"></label><button class="o" id="bRmAv">移除头像</button></div><div id="m3" class="msg"></div><p style="margin:14px 0 6px">音箱保修</p><p id="uW" class="mute"></p><div class="row" style="margin-top:16px"><button class="o" id="bOut">退出登录</button><button class="r" id="bDel">删除账户</button></div></div></div></div><script>window.ACC_L={"nav": "登录", "h": "登录账户", "lead": "登录后可以重听和管理你发布到歌唱舞台的歌曲。", "email": "邮箱", "send": "发送登录验证码", "code": "邮件中的 6 位验证码", "login": "登录", "other": "换个邮箱", "resend": "重新发送", "sent": "验证码已发送到 {e}。请打开邮件并输入验证码（10 分钟内有效）。", "noacct": "该邮箱还没有账户。账户需在手机连接音箱后，在 Karaoke AI Home 应用中创建。请打开应用 → 账户 进行创建。", "e_email": "请检查邮箱地址。", "e_wait": "刚刚已发送验证码，请 1 分钟后再试。", "e_limit": "今天发送次数过多，请明天再试。", "e_expired": "验证码已过期，请点击重新发送。", "e_tries": "输错次数过多，请点击重新发送。", "e_wrong": "验证码错误（还剩 {n} 次）。", "e_net": "无法连接服务器，请稍后再试。", "hi": "你好", "acct": "账户", "name": "显示名称", "save": "保存", "saved": "已保存", "e_name": "名称至少 2 个字，且不能含不文明用语。", "warranty": "音箱保修", "wcode": "保修码", "wend": "到期", "nowarranty": "尚未绑定音箱。", "avatar": "头像", "pick": "选择图片", "rmav": "移除头像", "songs": "我在歌唱舞台的歌曲", "empty": "你还没有发布歌曲。在应用的录音棚演唱后点击发布到歌唱舞台。", "play": "▶ 播放", "stop": "■ 停止", "dele": "删除", "delq": "确定从歌唱舞台永久删除这首歌？", "duet": "合唱", "hidden": "待审核，暂时隐藏", "voice": "人声音量", "logout": "退出登录", "delacct": "删除账户", "delacctq": "确定永久删除账户及所有歌曲、评论、爱心和鲜花？此操作无法恢复。", "deleted": "账户已删除。", "note": "还没有账户？账户只能在连接音箱后，在 Karaoke AI Home 应用中创建。", "go_h": "在网页上直接唱歌和收听", "go_san": "进入歌唱舞台", "go_stu": "进入录音室", "go_note": "打开 Karaoke AI Home 应用的网页版，已自动登录你的账号。录音需要允许使用麦克风；戴耳机录音效果更干净。"};window.ACC_LANG="zh";</script><script src="/account.js"></script></main><footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="/zh/download/">下载App</a> · <a href="/zh/support/">支持</a></footer></body></html>
