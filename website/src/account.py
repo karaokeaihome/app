@@ -98,6 +98,7 @@ GO = {
  'zh': dict(go_h="在网页上直接唱歌和收听", go_san="进入歌唱舞台", go_stu="进入录音室", go_note="打开 Karaoke AI Home 应用的网页版，已自动登录你的账号。录音需要允许使用麦克风；戴耳机录音效果更干净。"),
 }
 for _l in T: T[_l].update(GO[_l])
+for _l,_v in {'vi': 'Đã có mã', 'en': 'I have a code', 'ja': 'コードを持っている', 'ko': '코드가 있어요', 'fr': 'J’ai déjà un code', 'zh': '我已有验证码'}.items(): T[_l]['have']=_v
 
 CSS = """
 .acc{max-width:760px;margin:0 auto;padding:16px}.acc .card{margin:14px 0}
@@ -124,10 +125,15 @@ function errText(j){var c=j.code;if(j.noacct)return L.noacct;if(c==='email')retu
 var email='';
 function show(s){['stEmail','stCode','stIn'].forEach(function(x){$(x).classList.toggle('hide',x!==s)})}
 $('bSend').onclick=$('bResend').onclick=function(){email=($('iEmail').value||'').trim().toLowerCase();if(!email)return msg('m1',L.e_email,1);
-  msg('m1','…');msg('m2','');api('/w/acct/code',{json:{email:email,lang:LG}}).then(function(j){if(j.ok){show('stCode');msg('m2',L.sent.replace('{e}',email));$('iCode').focus()}
+  msg('m1','…');msg('m2','');api('/w/acct/code',{json:{email:email,lang:LG}}).then(function(j){if(j.ok||j.code==='wait'){pend(email);toCode()}
   else{show('stEmail');msg('m1',errText(j),1)}}).catch(function(){msg('m1',L.e_net,1)})};
-$('bOther').onclick=function(){show('stEmail');msg('m1','')};
-$('bLogin').onclick=function(){api('/w/acct/verify',{json:{email:email,code:($('iCode').value||'').trim()}}).then(function(j){if(j.acct){tok=j.acct;try{localStorage.setItem('kah_acct',tok)}catch(e){}load()}else msg('m2',errText(j),1)}).catch(function(){msg('m2',L.e_net,1)})};
+// Safari iPhone hay tải lại trang khi khách sang app Mail lấy mã → nhớ email đang chờ mã 10 phút
+function pend(m){try{if(m)localStorage.setItem('kah_pend',JSON.stringify({e:m,t:Date.now()}));else localStorage.removeItem('kah_pend')}catch(x){}}
+function pending(){try{var o=JSON.parse(localStorage.getItem('kah_pend')||'null');if(o&&Date.now()-o.t<600000)return o.e}catch(x){}return ''}
+function toCode(){show('stCode');msg('m2',L.sent.replace('{e}',email));try{$('iCode').focus()}catch(x){}}
+$('bHave').onclick=function(){email=($('iEmail').value||'').trim().toLowerCase()||pending();if(!email)return msg('m1',L.e_email,1);msg('m1','');toCode()};
+$('bOther').onclick=function(){pend('');show('stEmail');msg('m1','')};
+$('bLogin').onclick=function(){api('/w/acct/verify',{json:{email:email,code:($('iCode').value||'').trim()}}).then(function(j){if(j.acct){pend('');tok=j.acct;try{localStorage.setItem('kah_acct',tok)}catch(e){}load()}else msg('m2',errText(j),1)}).catch(function(){msg('m2',L.e_net,1)})};
 $('iCode').onkeydown=function(e){if(e.key==='Enter')$('bLogin').click()};$('iEmail').onkeydown=function(e){if(e.key==='Enter')$('bSend').click()};
 function logout(){tok=null;try{localStorage.removeItem('kah_acct')}catch(e){}stopPlay();show('stEmail')}
 $('bOut').onclick=logout;
@@ -167,7 +173,7 @@ function sync(){if(!yt||!yt.getPlayerState)return;var st=yt.getPlayerState(),vt=
     if(Math.abs(t.a.currentTime-tgt)>0.3)t.a.currentTime=tgt;if(t.a.paused)t.a.play().catch(function(){})})}
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w,'_blank')}
 $('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};
-if(tok)load();else show('stEmail');
+if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');
 })();
 """
 
@@ -175,7 +181,7 @@ def page(l, e):
     t = T[l]
     import json
     return ('<div class="acc"><h1>%s</h1><p class="lead">%s</p>'
-     '<div id="stEmail" class="card"><label>%s</label><input id="iEmail" type="email" autocomplete="email" inputmode="email"><button id="bSend">%s</button><div id="m1" class="msg"></div><p class="mute" style="font-size:.9rem">%s</p></div>'
+     '<div id="stEmail" class="card"><label>%s</label><input id="iEmail" type="email" autocomplete="email" inputmode="email"><button id="bSend">%s</button><button class="o" id="bHave" style="margin-left:8px">%s</button><div id="m1" class="msg"></div><p class="mute" style="font-size:.9rem">%s</p></div>'
      '<div id="stCode" class="card hide"><div id="m2" class="msg"></div><label>%s</label><input id="iCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><div class="row"><button id="bLogin">%s</button><button class="o" id="bResend">%s</button><button class="o" id="bOther">%s</button></div></div>'
      '<div id="stIn" class="hide"><div class="card"><div class="me"><div class="av" id="uAv">🙂</div><div><div class="mute">%s</div><b id="uName" style="font-size:1.3rem"></b><div class="mute" id="uMail"></div></div></div></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2><div class="row"><button id="bGoSan">🎪 %s</button><button id="bGoStu">🎙️ %s</button></div><p class="mute" style="font-size:.9rem;margin-bottom:0">%s</p></div>'
@@ -185,6 +191,6 @@ def page(l, e):
      '<p style="margin:14px 0 6px">%s</p><p id="uW" class="mute"></p>'
      '<div class="row" style="margin-top:16px"><button class="o" id="bOut">%s</button><button class="r" id="bDel">%s</button></div></div></div></div>'
      '<script>window.ACC_L=%s;window.ACC_LANG=%s;</script><script src="/account.js"></script>') % (
-        e(t['h']), e(t['lead']), e(t['email']), e(t['send']), e(t['note']), e(t['code']), e(t['login']), e(t['resend']), e(t['other']),
+        e(t['h']), e(t['lead']), e(t['email']), e(t['send']), e(t['have']), e(t['note']), e(t['code']), e(t['login']), e(t['resend']), e(t['other']),
         e(t['hi']), e(t['go_h']), e(t['go_san']), e(t['go_stu']), e(t['go_note']), e(t['songs']), e(t['voice']), e(t['stop']), e(t['acct']), e(t['name']), e(t['save']), e(t['avatar']), e(t['pick']), e(t['rmav']),
         e(t['warranty']), e(t['logout']), e(t['delacct']), json.dumps(t, ensure_ascii=False).replace('</', '<\\/'), json.dumps(l))
