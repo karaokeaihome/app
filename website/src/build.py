@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import C, LANGS, NAMES, SAY, PRICE, PRICE_LABEL, PRICE_NOTE, UI
 from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
+from features import rich, CSS as RCSS
 from cailoa import T as CL, UI as CLUI, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +45,7 @@ CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
 .gs{display:grid;gap:14px;grid-template-columns:1fr;margin:14px 0}.gs figure{margin:0;background:var(--card);border:1px solid #2a2a30;border-radius:16px;padding:12px}
 .gs figure img{width:100%;border-radius:10px;display:block;margin:0}.gs figcaption{margin-top:8px}.gs figcaption b{color:var(--acc)}.gs .n{color:var(--acc);font-weight:800;margin-right:6px}
 @media(min-width:860px){.gs.two{grid-template-columns:1fr 1fr}}
+"""+RCSS+"""
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
@@ -54,7 +56,7 @@ GROUPS=[('k_tag',[('goi-bai','K',None),('san-hat','san',0),('phong-thu','stu',0)
  ('p_tag',[('app','P',None),('dieu-khien','p_f',0),('micro-dien-thoai','p_f',1),('tiec-chia-se','p_f',2),('chieu-man-hinh','p_f',3)]),
  ('w_tag',[('bao-hanh','w_f',0),('cap-nhat','w_f',1),('rieng-tu','w_f',2)])]
 IMG={'goi-bai':'loa-phong-khach','tong-vang-mic':'loa-ban-lam-viec','bao-hanh':'phu-kien','hang-cho':'home','cham-diem':'entertain','radio':'entertain','giai-tri':'entertain',
- 'tro-ly-ai':'translate','dich-noi':'translate','lich-thoi-tiet':'home','the-duc':'fitness','app':'phone','dieu-khien':'phone','tiec-chia-se':'phone','phong-thu':'phone','san-hat':'phone'}
+ 'tro-ly-ai':'translate','dich-noi':'translate','lich-thoi-tiet':'home','the-duc':'fitness','app':'phone','dieu-khien':'phone','tiec-chia-se':'phone'}
 SPECIAL={'K':('🎤','k_h','k_p'),'A':('🤖','a_h','a_p'),'T':('🎨','t_h','t_p'),'P':('📲','p_h','p_p')}
 def feat(c,key,idx):
     if key in SPECIAL:
@@ -91,6 +93,7 @@ def detail(l,slug,gkey,key,idx,others):
     img=''
     if slug=='giao-dien':
         img='<div class="themes">'+''.join('<figure><img class="shot" src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>'%(im(l,f),e(x),e(x)) for f,x in zip(['theme-kids','theme-elder','theme-women','theme-tech'],c['themes']))+'</div>'
+    elif slug in ('phong-thu','san-hat'): img=rich(l,slug)
     elif slug in IMG: img='<img class="shot" src="%s" alt="%s" loading="lazy">'%(im(l,IMG[slug]),e(t))
     say=''
     if slug in ('goi-bai','tong-vang-mic'):
