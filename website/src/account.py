@@ -173,7 +173,7 @@ function playSong(p){stopPlay();cur=p;$('player').classList.remove('hide');$('pT
 function sync(){if(!yt||!yt.getPlayerState)return;var st=yt.getPlayerState(),vt=yt.getCurrentTime();
   tracks.forEach(function(t){var tgt=vt+t.d;if(st!==1||tgt<0||(t.a.duration&&tgt>t.a.duration)){if(!t.a.paused)t.a.pause();return}
     if(Math.abs(t.a.currentTime-tgt)>0.3)t.a.currentTime=tgt;if(t.a.paused)t.a.play().catch(function(){})})}
-function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w,'_blank')}
+function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
 $('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};
 if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');
 })();
