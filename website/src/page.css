@@ -28,6 +28,6 @@ section h2 small{display:block;font-size:.95rem;color:var(--acc);font-weight:600
 nav a{text-decoration:none}
 .hero h1 span{white-space:nowrap}
 :lang(ko) h1,:lang(ko) h2{word-break:keep-all}
-nav a.nl{padding:6px 14px;border-radius:999px;background:var(--acc,#e8b84a);color:#111!important;font-weight:700}
+nav a.nl{padding:6px 14px;border-radius:999px;background:var(--acc,#e8b84a);color:#111!important;font-weight:700;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:700px){nav{align-items:center}nav a{display:none}nav a.nl,nav b a{display:inline-block}nav b{margin:0 auto 0 0}}
 .contact a.mail{display:inline-block;font-size:clamp(1.1rem,5vw,1.5rem);font-weight:800;color:#111;background:var(--acc);padding:12px 22px;border-radius:999px;text-decoration:none;word-break:break-all}

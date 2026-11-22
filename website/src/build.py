@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Website 6 ngon ngu: trang chu = luoi bieu tuong, moi tinh nang 1 trang rieng.
 # Sua chu trong content.py roi chay: python3 build.py  -> ../website-cai-dat/public
-import os, html, sys
+import os, html, sys, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from content import C, LANGS, NAMES, SAY, PRICE, PRICE_LABEL, PRICE_NOTE, UI
 from pages import P, APK, IOS, SITE, LEGAL
@@ -69,7 +69,7 @@ def head(l,c,title,desc,path,noidx=False):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:image" content="https://karaokeaihome.com/img/home.jpg">
 {alts}{'<meta name="robots" content="noindex">' if noidx else ''}<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><style>{CSS}</style></head><body>
-<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav>
+<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav><script>try{{if(localStorage.getItem('kah_acct')){{var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||{json.dumps(AT[l]['my'],ensure_ascii=False)}}}}}catch(_e){{}}</script>
 <div class="lang">{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div>'''
 def foot(l,c):
     return f'''<footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a> · <a href="{url(l,'support/')}">{e(c['legal'][2])}</a></footer></body></html>'''

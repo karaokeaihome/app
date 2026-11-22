@@ -30,7 +30,7 @@ section h2 small{display:block;font-size:.95rem;color:var(--acc);font-weight:600
 nav a{text-decoration:none}
 .hero h1 span{white-space:nowrap}
 :lang(ko) h1,:lang(ko) h2{word-break:keep-all}
-nav a.nl{padding:6px 14px;border-radius:999px;background:var(--acc,#e8b84a);color:#111!important;font-weight:700}
+nav a.nl{padding:6px 14px;border-radius:999px;background:var(--acc,#e8b84a);color:#111!important;font-weight:700;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 @media(max-width:700px){nav{align-items:center}nav a{display:none}nav a.nl,nav b a{display:inline-block}nav b{margin:0 auto 0 0}}
 .contact a.mail{display:inline-block;font-size:clamp(1.1rem,5vw,1.5rem);font-weight:800;color:#111;background:var(--acc);padding:12px 22px;border-radius:999px;text-decoration:none;word-break:break-all}
 
@@ -97,7 +97,7 @@ nav a.nl{padding:6px 14px;border-radius:999px;background:var(--acc,#e8b84a);colo
 
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 </style></head><body>
-<nav><b><a href="/fr/" style="color:var(--fg)">Karaoke AI Home</a></b><a href="/fr/#tinh-nang">Toutes les fonctionnalités</a><a href="/fr/download/">Télécharger l’app</a><a href="/fr/#lien-he">Contact</a><a href="/fr/support/">Assistance</a><a class="nl" href="/fr/account/">Connexion</a></nav>
+<nav><b><a href="/fr/" style="color:var(--fg)">Karaoke AI Home</a></b><a href="/fr/#tinh-nang">Toutes les fonctionnalités</a><a href="/fr/download/">Télécharger l’app</a><a href="/fr/#lien-he">Contact</a><a href="/fr/support/">Assistance</a><a class="nl" href="/fr/account/">Connexion</a></nav><script>try{if(localStorage.getItem('kah_acct')){var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||"Mon compte"}}catch(_e){}</script>
 <div class="lang"><a href="/f/dam-thoai/" class="" lang="vi">Tiếng Việt</a><a href="/en/f/dam-thoai/" class="" lang="en">English</a><a href="/ja/f/dam-thoai/" class="" lang="ja">日本語</a><a href="/ko/f/dam-thoai/" class="" lang="ko">한국어</a><a href="/fr/f/dam-thoai/" class="on" lang="fr">Français</a><a href="/zh/f/dam-thoai/" class="" lang="zh">中文</a></div>
 <main class="detail"><a class="bk" href="/fr/#tinh-nang">← Toutes les fonctionnalités</a>
 <div class="big">📢</div><div class="tag" style="margin-top:14px">Pour les commerces et les foyers</div><h1>Interphone entre enceintes</h1><p class="d">Nommez l’enceinte de chaque pièce, appelez une pièce ou toutes les enceintes de la maison.</p>

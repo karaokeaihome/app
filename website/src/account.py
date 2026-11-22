@@ -98,6 +98,7 @@ GO = {
  'zh': dict(go_h="在网页上直接唱歌和收听", go_san="进入歌唱舞台", go_stu="进入录音室", go_note="打开 Karaoke AI Home 应用的网页版，已自动登录你的账号。录音需要允许使用麦克风；戴耳机录音效果更干净。"),
 }
 for _l in T: T[_l].update(GO[_l])
+for _l,_v in {'vi': 'Tài khoản của tôi', 'en': 'My account', 'ja': 'マイアカウント', 'ko': '내 계정', 'fr': 'Mon compte', 'zh': '我的账号'}.items(): T[_l]['my']=_v
 for _l,_v in {'vi': 'Đã có mã', 'en': 'I have a code', 'ja': 'コードを持っている', 'ko': '코드가 있어요', 'fr': 'J’ai déjà un code', 'zh': '我已有验证码'}.items(): T[_l]['have']=_v
 
 CSS = """
@@ -123,6 +124,7 @@ function api(p,o){o=o||{};var h={};if(tok)h['X-Acct']=tok;if(o.json!==undefined)
 function errText(j){var c=j.code;if(j.noacct)return L.noacct;if(c==='email')return L.e_email;if(c==='wait')return L.e_wait;if(c==='limit')return L.e_limit;
   if(c==='expired')return L.e_expired;if(c==='tries')return L.e_tries;if(c==='wrong')return L.e_wrong.replace('{n}',j.left);return L.e_net}
 var email='';
+function hdr(n){var a=document.querySelector('nav a.nl');try{if(n)localStorage.setItem('kah_nm',n);else localStorage.removeItem('kah_nm')}catch(x){}if(a)a.textContent=tok?(n||L.my):L.nav;$('accH').textContent=tok?L.my:L.h;document.querySelector('.acc .lead').style.display=tok?'none':''}
 function show(s){['stEmail','stCode','stIn'].forEach(function(x){$(x).classList.toggle('hide',x!==s)})}
 $('bSend').onclick=$('bResend').onclick=function(){email=($('iEmail').value||'').trim().toLowerCase();if(!email)return msg('m1',L.e_email,1);
   msg('m1','…');msg('m2','');api('/w/acct/code',{json:{email:email,lang:LG}}).then(function(j){if(j.ok||j.code==='wait'){pend(email);toCode()}
@@ -135,16 +137,16 @@ $('bHave').onclick=function(){email=($('iEmail').value||'').trim().toLowerCase()
 $('bOther').onclick=function(){pend('');show('stEmail');msg('m1','')};
 $('bLogin').onclick=function(){api('/w/acct/verify',{json:{email:email,code:($('iCode').value||'').trim()}}).then(function(j){if(j.acct){pend('');tok=j.acct;try{localStorage.setItem('kah_acct',tok)}catch(e){}load()}else msg('m2',errText(j),1)}).catch(function(){msg('m2',L.e_net,1)})};
 $('iCode').onkeydown=function(e){if(e.key==='Enter')$('bLogin').click()};$('iEmail').onkeydown=function(e){if(e.key==='Enter')$('bSend').click()};
-function logout(){tok=null;try{localStorage.removeItem('kah_acct')}catch(e){}stopPlay();show('stEmail')}
+function logout(){tok=null;try{localStorage.removeItem('kah_acct')}catch(e){}hdr('');stopPlay();show('stEmail')}
 $('bOut').onclick=logout;
 function fmt(t){var d=new Date(t);return d.toLocaleDateString(LG==='vi'?'vi-VN':LG)}
 var me=null;
-function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
+function load(){api('/w/acct/me').then(function(a){if(a._s===401){logout();return}me=a;show('stIn');hdr(a.name||a.email.split('@')[0]);$('uName').textContent=a.name||a.email;$('uMail').textContent=a.email;$('iName').value=a.name||'';
   if(a.warranty&&a.warranty.start){$('uW').innerHTML=esc(L.wcode)+': <b>'+esc(a.warranty.code)+'</b><br>'+esc(L.wend)+': <b>'+fmt(a.warranty.start+365*864e5)+'</b>'}else $('uW').textContent=L.nowarranty;
   api('/w/san/me').then(function(s){setAv(s.uid,s.av);if(!a.name&&s.name)$('iName').value=s.name});songs()}).catch(function(){msg('m1',L.e_net,1)})}
 function setAv(uid,av){var e=$('uAv');if(av){e.style.backgroundImage='url('+A+'/w/san/av?u='+encodeURIComponent(uid)+'&v='+av+')';e.textContent=''}else{e.style.backgroundImage='';e.textContent='🙂'}}
 $('bName').onclick=function(){var n=$('iName').value;api('/w/acct/name',{json:{name:n}}).then(function(j){if(!j.ok)return msg('m3',L.e_name,1);
-  api('/w/san/me',{json:{name:n}}).then(function(){msg('m3',L.saved);$('uName').textContent=j.name})})};
+  api('/w/san/me',{json:{name:n}}).then(function(){msg('m3',L.saved);$('uName').textContent=j.name;hdr(j.name)})})};
 $('fAv').onchange=function(){var f=this.files[0];if(!f)return;var img=new Image();img.onload=function(){var c=document.createElement('canvas'),s=256,w=img.width,h=img.height,m=Math.min(w,h);c.width=c.height=s;
   c.getContext('2d').drawImage(img,(w-m)/2,(h-m)/2,m,m,0,0,s,s);c.toBlob(function(b){api('/w/san/avatar',{body:b}).then(function(j){if(j.ok)api('/w/san/me').then(function(s){setAv(s.uid,s.av)});else msg('m3',j.error||L.e_net,1)})},'image/jpeg',0.82)};img.src=URL.createObjectURL(f)};
 $('bRmAv').onclick=function(){api('/w/san/avatar',{body:new Blob([])}).then(function(){setAv('',0)})};
@@ -180,7 +182,7 @@ if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode(
 def page(l, e):
     t = T[l]
     import json
-    return ('<div class="acc"><h1>%s</h1><p class="lead">%s</p>'
+    return ('<div class="acc"><h1 id="accH">%s</h1><p class="lead">%s</p>'
      '<div id="stEmail" class="card"><label>%s</label><input id="iEmail" type="email" autocomplete="email" inputmode="email"><button id="bSend">%s</button><button class="o" id="bHave" style="margin-left:8px">%s</button><div id="m1" class="msg"></div><p class="mute" style="font-size:.9rem">%s</p></div>'
      '<div id="stCode" class="card hide"><div id="m2" class="msg"></div><label>%s</label><input id="iCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><div class="row"><button id="bLogin">%s</button><button class="o" id="bResend">%s</button><button class="o" id="bOther">%s</button></div></div>'
      '<div id="stIn" class="hide"><div class="card"><div class="me"><div class="av" id="uAv">🙂</div><div><div class="mute">%s</div><b id="uName" style="font-size:1.3rem"></b><div class="mute" id="uMail"></div></div></div></div>'
