@@ -16,7 +16,7 @@ L['vi'] = dict(
   ("3. Dữ liệu chúng tôi thu thập và lý do", [('rows', [
     ("Email", "Khi bạn tạo tài khoản (không bắt buộc)", "Gửi mã xác minh và đăng nhập; gửi thư bảo hành, cảnh báo bảo mật; gửi các thông báo bạn tự bật", "Đến khi bạn xoá tài khoản"),
     ("Tên hiển thị, ảnh đại diện", "Khi bạn tự đặt", "Hiện trên Sàn hát", "Đến khi bạn sửa hoặc xoá tài khoản"),
-    ("Mã loa và mã điện thoại (chuỗi ngẫu nhiên, không chứa tên hay số điện thoại)", "Khi điện thoại kết nối với loa", "Kích hoạt app với loa chính hãng; tối đa 10 điện thoại mỗi loa; tính bảo hành 12 tháng; cảnh báo khi có điện thoại lạ kết nối", "Mã điện thoại: đến khi gỡ khỏi loa. Ngày bắt đầu bảo hành: suốt thời gian bảo hành"),
+    ("Mã loa và mã điện thoại (chuỗi ngẫu nhiên, không chứa tên hay số điện thoại)", "Khi điện thoại kết nối với loa", "Kích hoạt app với loa chính hãng; mỗi loa 5 lượt kết nối điện thoại miễn phí; tính bảo hành 12 tháng; cảnh báo khi có điện thoại lạ kết nối", "Mã điện thoại: đến khi gỡ khỏi loa. Ngày bắt đầu bảo hành: suốt thời gian bảo hành"),
     ("Bản thu giọng hát, bình luận, lượt tim và hoa", "Chỉ khi bạn chủ động đăng lên Sàn hát", "Hiển thị cho người dùng khác trên Sàn hát", "Đến khi bạn xoá bài hoặc xoá tài khoản"),
     ("Câu nói hoặc câu chữ gửi cho trợ lý AI, dịch, đọc to", "Khi bạn dùng các tính năng này (app hỏi ý kiến trước lần đầu)", "Nhận dạng giọng nói, tạo câu trả lời, dịch, đọc thành tiếng", "Không lưu lại sau khi trả kết quả"),
     ("Tỉnh hoặc thành phố gần đúng", "Khi xem thời tiết", "Hiện thời tiết. Lấy từ quyền vị trí gần đúng nếu bạn cho phép, nếu không thì suy ra từ địa chỉ IP. Không dùng GPS chính xác", "Không lưu"),
@@ -39,7 +39,7 @@ L['vi'] = dict(
   ("11. Thay đổi", ["Khi chính sách thay đổi, chúng tôi cập nhật trang này và ngày hiệu lực. Nếu thay đổi quan trọng, app sẽ hỏi bạn đồng ý lại."])],
  tm=[
   ("1. Chấp nhận", ["Khi tạo tài khoản hoặc dùng app Karaoke AI Home do {legal} cung cấp, bạn đồng ý với các điều khoản này và với Chính sách quyền riêng tư. Nếu không đồng ý, bạn vẫn dùng được các tính năng điều khiển loa không cần tài khoản."]),
-  ("2. Tài khoản", [["Chỉ tạo được tài khoản sau khi app kết nối với một loa karaoke AI chính hãng. Mỗi loa kết nối tối đa 10 điện thoại.",
+  ("2. Tài khoản", [["Chỉ tạo được tài khoản sau khi app kết nối với một loa karaoke AI chính hãng. Mỗi loa có 5 lượt kết nối điện thoại miễn phí; mỗi điện thoại mới dùng 1 lượt, gỡ điện thoại không hoàn lượt, hết lượt có thể mua thêm.",
     "Bạn cần dùng email thật của mình và giữ an toàn hộp thư đó. Mọi hoạt động bằng tài khoản của bạn được xem là của bạn.",
     "Bạn phải từ 13 tuổi trở lên. Người dưới 16 tuổi cần cha mẹ hoặc người giám hộ đồng ý.", "Bạn có thể xoá tài khoản bất cứ lúc nào trong app."]]),
   ("3. Sàn hát và nội dung bạn đăng", [["Chỉ đăng giọng hát của chính bạn hoặc của người đã đồng ý.", "Nhạc nền phát từ YouTube và không được lưu kèm bản thu."],
@@ -69,7 +69,7 @@ L['en'] = dict(
   ("3. Data we collect and why", [('rows', [
     ("Email", "When you create an account (optional)", "Send verification codes and sign you in; send warranty and security emails; send notifications you turn on", "Until you delete your account"),
     ("Display name, profile photo", "When you set them", "Shown on the Singing Stage", "Until you change them or delete your account"),
-    ("Speaker ID and phone ID (random strings, no name or phone number)", "When a phone connects to a speaker", "Activate the app with a genuine speaker; limit of 10 phones per speaker; 12‑month warranty; alert you when an unknown phone connects", "Phone ID: until removed from the speaker. Warranty start date: for the warranty period"),
+    ("Speaker ID and phone ID (random strings, no name or phone number)", "When a phone connects to a speaker", "Activate the app with a genuine speaker; 5 free phone connections per speaker; 12‑month warranty; alert you when an unknown phone connects", "Phone ID: until removed from the speaker. Warranty start date: for the warranty period"),
     ("Singing recordings, comments, hearts and flowers", "Only when you choose to post to the Singing Stage", "Shown to other users on the Singing Stage", "Until you delete the post or your account"),
     ("Speech or text sent to the AI assistant, translation or read‑aloud", "When you use these features (the app asks first)", "Speech recognition, answers, translation, text‑to‑speech", "Not kept after the result is returned"),
     ("Approximate province or city", "When you view the weather", "Show the weather. Taken from the approximate‑location permission if you allow it, otherwise estimated from your IP address. Precise GPS is never used", "Not kept"),
@@ -92,7 +92,7 @@ L['en'] = dict(
   ("11. Changes", ["When this policy changes we update this page and the effective date. For important changes the app will ask for your consent again."])],
  tm=[
   ("1. Acceptance", ["By creating an account or using the Karaoke AI Home app provided by {legal}, you agree to these terms and to the Privacy Policy. If you do not agree, you can still use the speaker control features that need no account."]),
-  ("2. Accounts", [["An account can be created only after the app connects to a genuine AI karaoke speaker. Each speaker supports up to 10 phones.",
+  ("2. Accounts", [["An account can be created only after the app connects to a genuine AI karaoke speaker. Each speaker includes 5 free phone connections; each new phone uses one, removing a phone does not refund it, and more can be purchased.",
     "Use your own real email address and keep that mailbox secure. All activity on your account is treated as yours.",
     "You must be at least 13. Users under 16 need a parent’s or guardian’s consent.", "You can delete your account at any time in the app."]]),
   ("3. Singing Stage and your content", [["Post only your own voice or the voice of someone who agreed.", "Backing music plays from YouTube and is not stored with your recording."],
@@ -122,7 +122,7 @@ L['ja'] = dict(
   ("3. 収集するデータと目的", [('rows', [
     ("メールアドレス", "アカウント作成時（任意）", "確認コードの送信とログイン、保証・セキュリティのお知らせ、お客様がオンにした通知の送信", "アカウント削除まで"),
     ("表示名・プロフィール画像", "お客様が設定したとき", "歌のステージでの表示", "変更またはアカウント削除まで"),
-    ("スピーカーID・スマホID（氏名や電話番号を含まないランダムな文字列）", "スマホがスピーカーに接続したとき", "正規スピーカーでのアプリ有効化、1台あたり最大10台のスマホ、12か月保証、見知らぬスマホ接続時の警告", "スマホID：スピーカーから削除するまで。保証開始日：保証期間中"),
+    ("スピーカーID・スマホID（氏名や電話番号を含まないランダムな文字列）", "スマホがスピーカーに接続したとき", "正規スピーカーでのアプリ有効化、スピーカー1台につき無料のスマホ接続5回、12か月保証、見知らぬスマホ接続時の警告", "スマホID：スピーカーから削除するまで。保証開始日：保証期間中"),
     ("歌声の録音、コメント、ハート、花", "歌のステージに自ら投稿したときのみ", "歌のステージでほかのユーザーに表示", "投稿またはアカウントを削除するまで"),
     ("AIアシスタント・翻訳・読み上げに送る音声や文章", "これらの機能を使うとき（初回に同意を確認）", "音声認識、回答、翻訳、読み上げ", "結果を返した後は保存しません"),
     ("おおよその都道府県・市", "天気を表示するとき", "天気の表示。許可された場合は「おおよその位置情報」から、許可がない場合は IP アドレスから推定。正確な GPS は使用しません", "保存しません"),
@@ -145,7 +145,7 @@ L['ja'] = dict(
   ("11. 変更", ["本ポリシーを変更した場合は、このページと施行日を更新します。重要な変更の場合はアプリで改めて同意を確認します。"])],
  tm=[
   ("1. 同意", ["{legal} が提供する Karaoke AI Home アプリでアカウントを作成または利用することで、本規約およびプライバシーポリシーに同意したものとみなします。同意しない場合でも、アカウント不要のスピーカー操作機能はご利用いただけます。"]),
-  ("2. アカウント", [["アカウントは、アプリが正規の AI カラオケスピーカーに接続した後にのみ作成できます。1台のスピーカーに接続できるスマホは最大10台です。",
+  ("2. アカウント", [["アカウントは、アプリが正規の AI カラオケスピーカーに接続した後にのみ作成できます。スピーカー1台につき無料のスマホ接続が5回あります。新しいスマホごとに1回使い、スマホを削除しても戻らず、追加購入できます。",
     "ご自身の実在するメールアドレスを使用し、そのメールボックスを安全に管理してください。アカウントでの行為はすべてお客様の行為とみなされます。",
     "13歳以上である必要があります。16歳未満の方は保護者の同意が必要です。", "アカウントはアプリからいつでも削除できます。"]]),
   ("3. 歌のステージと投稿内容", [["投稿できるのはご自身の歌声、または同意を得た方の歌声のみです。", "伴奏は YouTube から再生され、録音と一緒には保存されません。"],
@@ -175,7 +175,7 @@ L['ko'] = dict(
   ("3. 수집하는 데이터와 목적", [('rows', [
     ("이메일", "계정을 만들 때(선택)", "인증 코드 발송과 로그인, 보증·보안 안내 메일, 직접 켠 알림 발송", "계정 삭제 시까지"),
     ("표시 이름, 프로필 사진", "직접 설정할 때", "노래 무대에 표시", "수정하거나 계정을 삭제할 때까지"),
-    ("스피커 ID와 휴대폰 ID(이름이나 전화번호가 없는 임의 문자열)", "휴대폰이 스피커에 연결될 때", "정품 스피커로 앱 활성화, 스피커당 최대 10대, 12개월 보증, 낯선 휴대폰 연결 시 경고", "휴대폰 ID: 스피커에서 제거할 때까지. 보증 시작일: 보증 기간 동안"),
+    ("스피커 ID와 휴대폰 ID(이름이나 전화번호가 없는 임의 문자열)", "휴대폰이 스피커에 연결될 때", "정품 스피커로 앱 활성화, 스피커당 무료 휴대폰 연결 5회, 12개월 보증, 낯선 휴대폰 연결 시 경고", "휴대폰 ID: 스피커에서 제거할 때까지. 보증 시작일: 보증 기간 동안"),
     ("노래 녹음, 댓글, 하트와 꽃", "노래 무대에 직접 올릴 때만", "노래 무대에서 다른 이용자에게 표시", "게시물이나 계정을 삭제할 때까지"),
     ("AI 비서, 번역, 읽어주기에 보내는 음성이나 문장", "이 기능을 사용할 때(처음에 동의를 받음)", "음성 인식, 답변, 번역, 음성 합성", "결과를 돌려준 뒤 저장하지 않음"),
     ("대략적인 시·도", "날씨를 볼 때", "날씨 표시. 허용하면 휴대폰의 대략적 위치 권한에서, 아니면 IP 주소로 추정. 정확한 GPS는 사용하지 않음", "저장하지 않음"),
@@ -198,7 +198,7 @@ L['ko'] = dict(
   ("11. 변경", ["정책이 바뀌면 이 페이지와 시행일을 업데이트합니다. 중요한 변경은 앱에서 다시 동의를 받습니다."])],
  tm=[
   ("1. 동의", ["{legal}이(가) 제공하는 Karaoke AI Home 앱에서 계정을 만들거나 앱을 사용하면 본 약관과 개인정보처리방침에 동의한 것으로 봅니다. 동의하지 않아도 계정이 필요 없는 스피커 조작 기능은 사용할 수 있습니다."]),
-  ("2. 계정", [["계정은 앱이 정품 AI 노래방 스피커에 연결된 후에만 만들 수 있습니다. 스피커 한 대에 최대 10대의 휴대폰을 연결할 수 있습니다.",
+  ("2. 계정", [["계정은 앱이 정품 AI 노래방 스피커에 연결된 후에만 만들 수 있습니다. 스피커마다 무료 휴대폰 연결 5회가 제공되며, 새 휴대폰마다 1회를 사용하고 휴대폰을 삭제해도 환불되지 않으며 추가로 구매할 수 있습니다.",
     "본인의 실제 이메일을 사용하고 그 메일함을 안전하게 관리해야 합니다. 계정으로 이루어진 모든 활동은 이용자의 활동으로 봅니다.",
     "13세 이상이어야 합니다. 16세 미만은 부모 또는 보호자의 동의가 필요합니다.", "계정은 앱에서 언제든지 삭제할 수 있습니다."]]),
   ("3. 노래 무대와 게시 콘텐츠", [["본인의 목소리 또는 동의한 사람의 목소리만 올리세요.", "반주는 YouTube에서 재생되며 녹음과 함께 저장되지 않습니다."],
@@ -228,7 +228,7 @@ L['fr'] = dict(
   ("3. Données collectées et finalités", [('rows', [
     ("Adresse e‑mail", "À la création d’un compte (facultatif)", "Envoyer les codes de vérification et vous connecter ; e‑mails de garantie et de sécurité ; notifications que vous activez", "Jusqu’à la suppression du compte"),
     ("Nom affiché, photo de profil", "Quand vous les définissez", "Affichage sur la Scène karaoké", "Jusqu’à modification ou suppression du compte"),
-    ("Identifiant d’enceinte et de téléphone (chaînes aléatoires, sans nom ni numéro)", "Quand un téléphone se connecte à une enceinte", "Activer l’application avec une enceinte authentique ; 10 téléphones maximum par enceinte ; garantie de 12 mois ; alerte si un téléphone inconnu se connecte", "Identifiant du téléphone : jusqu’à son retrait de l’enceinte. Date de début de garantie : pendant la garantie"),
+    ("Identifiant d’enceinte et de téléphone (chaînes aléatoires, sans nom ni numéro)", "Quand un téléphone se connecte à une enceinte", "Activer l’application avec une enceinte authentique ; 5 connexions de téléphone gratuites par enceinte ; garantie de 12 mois ; alerte si un téléphone inconnu se connecte", "Identifiant du téléphone : jusqu’à son retrait de l’enceinte. Date de début de garantie : pendant la garantie"),
     ("Enregistrements de chant, commentaires, cœurs et fleurs", "Uniquement si vous publiez sur la Scène karaoké", "Affichage aux autres utilisateurs de la Scène", "Jusqu’à suppression de la publication ou du compte"),
     ("Paroles ou texte envoyés à l’assistant IA, à la traduction ou à la lecture à voix haute", "Quand vous utilisez ces fonctions (l’application vous le demande d’abord)", "Reconnaissance vocale, réponses, traduction, synthèse vocale", "Non conservés après la réponse"),
     ("Province ou ville approximative", "Quand vous consultez la météo", "Afficher la météo. Issue de l’autorisation de localisation approximative si vous l’accordez, sinon estimée à partir de l’adresse IP. Le GPS précis n’est jamais utilisé", "Non conservée"),
@@ -251,7 +251,7 @@ L['fr'] = dict(
   ("11. Modifications", ["En cas de modification, nous mettons à jour cette page et la date d’effet. Pour les changements importants, l’application vous redemandera votre accord."])],
  tm=[
   ("1. Acceptation", ["En créant un compte ou en utilisant l’application Karaoke AI Home fournie par {legal}, vous acceptez les présentes conditions et la Politique de confidentialité. Si vous ne les acceptez pas, vous pouvez toujours utiliser les fonctions de contrôle de l’enceinte qui ne demandent pas de compte."]),
-  ("2. Compte", [["Un compte ne peut être créé qu’après la connexion de l’application à une enceinte karaoké IA authentique. Chaque enceinte accepte 10 téléphones au maximum.",
+  ("2. Compte", [["Un compte ne peut être créé qu’après la connexion de l’application à une enceinte karaoké IA authentique. Chaque enceinte inclut 5 connexions de téléphone gratuites ; chaque nouveau téléphone en utilise une, retirer un téléphone ne la rembourse pas, et d’autres peuvent être achetées.",
     "Utilisez votre propre adresse e‑mail réelle et protégez cette boîte. Toute activité sur votre compte est réputée être la vôtre.",
     "Vous devez avoir au moins 13 ans. Les moins de 16 ans doivent avoir l’accord d’un parent ou tuteur.", "Vous pouvez supprimer votre compte à tout moment dans l’application."]]),
   ("3. Scène karaoké et vos contenus", [["Publiez uniquement votre propre voix ou celle d’une personne qui a donné son accord.", "La musique d’accompagnement est lue depuis YouTube et n’est pas stockée avec l’enregistrement."],
@@ -281,7 +281,7 @@ L['zh'] = dict(
   ("3. 我们收集的数据及原因", [('rows', [
     ("电子邮箱", "创建账户时（可选）", "发送验证码并登录；发送保修和安全邮件；发送您自行开启的通知", "直到您删除账户"),
     ("显示名称、头像", "您自行设置时", "在歌唱舞台上显示", "直到您修改或删除账户"),
-    ("音箱编号和手机编号（随机字符串，不含姓名或电话号码）", "手机连接音箱时", "用正品音箱激活应用；每台音箱最多 10 部手机；12 个月保修；陌生手机连接时提醒", "手机编号：直到从音箱移除。保修开始日期：保修期内"),
+    ("音箱编号和手机编号（随机字符串，不含姓名或电话号码）", "手机连接音箱时", "用正品音箱激活应用；每台音箱 5 次免费手机连接；12 个月保修；陌生手机连接时提醒", "手机编号：直到从音箱移除。保修开始日期：保修期内"),
     ("演唱录音、评论、爱心和鲜花", "仅在您主动发布到歌唱舞台时", "在歌唱舞台上向其他用户展示", "直到您删除作品或账户"),
     ("发送给 AI 助手、翻译、朗读的语音或文字", "使用这些功能时（首次使用前征求同意）", "语音识别、生成回答、翻译、朗读", "返回结果后不保存"),
     ("大致的省份或城市", "查看天气时", "显示天气。如您允许，来自手机的“大致位置”权限，否则根据 IP 地址推算。从不使用精确 GPS", "不保存"),
@@ -304,7 +304,7 @@ L['zh'] = dict(
   ("11. 变更", ["本政策变更时，我们会更新本页面及生效日期。如有重要变更，应用会再次征求您的同意。"])],
  tm=[
   ("1. 接受条款", ["创建账户或使用由 {legal} 提供的 Karaoke AI Home 应用，即表示您同意本条款和隐私政策。如不同意，您仍可使用无需账户的音箱控制功能。"]),
-  ("2. 账户", [["只有在应用连接正品 AI 卡拉OK音箱后才能创建账户。每台音箱最多连接 10 部手机。",
+  ("2. 账户", [["只有在应用连接正品 AI 卡拉OK音箱后才能创建账户。每台音箱有 5 次免费手机连接；每部新手机使用 1 次，移除手机不退还次数，用完可另行购买。",
     "请使用您本人的真实邮箱并妥善保管该邮箱。以您账户进行的所有活动均视为您本人的行为。",
     "您必须年满 13 岁。16 岁以下用户需获得父母或监护人同意。", "您可以随时在应用中删除账户。"]]),
   ("3. 歌唱舞台与您发布的内容", [["只发布您本人或已同意者的歌声。", "伴奏从 YouTube 播放，不会与录音一起保存。"],

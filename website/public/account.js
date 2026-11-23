@@ -34,7 +34,11 @@ $('bName').onclick=function(){var n=$('iName').value;api('/w/acct/name',{json:{n
 $('fAv').onchange=function(){var f=this.files[0];if(!f)return;var img=new Image();img.onload=function(){var c=document.createElement('canvas'),s=256,w=img.width,h=img.height,m=Math.min(w,h);c.width=c.height=s;
   c.getContext('2d').drawImage(img,(w-m)/2,(h-m)/2,m,m,0,0,s,s);c.toBlob(function(b){api('/w/san/avatar',{body:b}).then(function(j){if(j.ok)api('/w/san/me').then(function(s){setAv(s.uid,s.av)});else msg('m3',j.error||L.e_net,1)})},'image/jpeg',0.82)};img.src=URL.createObjectURL(f)};
 $('bRmAv').onclick=function(){api('/w/san/avatar',{body:new Blob([])}).then(function(){setAv('',0)})};
-$('bDel').onclick=function(){if(!confirm(L.delacctq))return;api('/w/acct/delete',{json:{confirm:true}}).then(function(j){if(j.deleted){logout();msg('m1',L.deleted)}})};
+$('bDel').onclick=function(e){e.preventDefault();$('delBox').classList.toggle('hide');$('delBox').scrollIntoView({behavior:'smooth',block:'center'})};
+$('bDelNo').onclick=function(){$('delBox').classList.add('hide');$('delStep').classList.add('hide');msg('m5','')};
+$('bDelCode').onclick=function(){msg('m5','…');api('/w/acct/delcode',{json:{lang:LG}}).then(function(j){if(j.ok||j.code==='wait'){$('delStep').classList.remove('hide');msg('m5',L.del_sent);$('iDelCode').focus()}else msg('m5',errText(j),1)}).catch(function(){msg('m5',L.e_net,1)})};
+$('bDelGo').onclick=function(){var c=($('iDelCode').value||'').trim();if(c.length!==6)return msg('m5',L.e_wrong.replace('{n}','5'),1);
+  api('/w/acct/delete',{json:{code:c}}).then(function(j){if(j.deleted){$('delBox').classList.add('hide');logout();msg('m1',L.deleted)}else msg('m5',j.code==='need'?L.del_sent:errText(j),1)}).catch(function(){msg('m5',L.e_net,1)})};
 function songs(){api('/w/san/list?tab=mine').then(function(j){var it=j.items||[];$('songs').innerHTML=it.length?it.map(function(p){
   return '<div class="song"><img src="https://i.ytimg.com/vi/'+esc(p.vid)+'/mqdefault.jpg" alt=""><div class="t"><b>'+esc(p.title)+(p.parent?' · 👫 '+esc(L.duet):'')+'</b>'+
   '<small>'+fmt(p.at)+' · ❤️ '+p.likes+' · 🌹 '+p.flowers+' · 💬 '+p.cmts+' · ▶ '+p.plays+'</small>'+(p.hidden?'<small class="err">'+esc(L.hidden)+'</small>':'')+
