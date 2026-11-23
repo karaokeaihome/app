@@ -8,7 +8,7 @@ from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
 from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
-from cailoa import T as CL, UI as CLUI, WIN, MAC, WIN_LATEST, MAC_LATEST
+from cailoa import T as CL, UI as CLUI, UPG, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
 OUT=os.path.join(HERE,'..','public') if os.path.isdir(os.path.join(HERE,'..','public')) else os.path.join(HERE,'..','website-cai-dat','public')  # repo GitHub: website/src -> website/public
@@ -126,6 +126,7 @@ def cailoa_page(l):
     t=CL[l]; u=CLUI[l]; im=lambda n:'/img/cai-loa/%s/%s.jpg'%(l,n)
     b='<h1>%s</h1><p class="lead">%s</p><p class="note">%s</p>'%(e(t['g_title']),e(t['g_lead']),e(t['need']))
     b+='<div class="btns" style="justify-content:flex-start"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></div>'%(WIN,e(t['win']),MAC,e(t['mac']))
+    uh,ul=UPG[l]; b+='<h2 id="nang-cap">🚀 %s</h2><ul>%s</ul>'%(e(uh),''.join('<li>%s</li>'%x for x in ul))
     b+='<h2>%s</h2><div class="dlg"><div class="dlc"><h2>%s</h2><ol>%s</ol></div><div class="dlc"><h2>%s</h2><ol>%s</ol></div></div>'%(e(t['h1']),
         e(t['win_h']),''.join('<li>%s</li>'%x for x in t['win_s']),e(t['mac_h']),''.join('<li>%s</li>'%x for x in t['mac_s']))
     b+='<h2>%s</h2><p>%s</p><div class="gs two">%s</div>'%(e(t['h2']),e(t['h2_p']),''.join(
@@ -140,6 +141,7 @@ def support(l):
     p=P[l]; g=LG[l]; qa=list(p['qa'][:-1])+[g['del_q']]
     b='<h1>%s</h1><p>%s</p><div class="card"><p><b>Email:</b> <a href="mailto:info@karaokeaihome.com">info@karaokeaihome.com</a></p></div><h2>%s</h2>%s'%(
         e(p['sup']),e(p['sup_lead']),e(p['faq']),''.join('<p><b>%s</b> %s</p>'%(e(q),a.format(dl=url(l,'download/'))) for q,a in qa))
+    uh,ul=UPG[l]; b+='<h2>🚀 %s</h2><ul>%s</ul>'%(e(uh),''.join('<li>%s</li>'%x for x in ul))
     b+='<h2 id="%s">%s</h2><ul>%s</ul>'%(DEL_ID,e(g['del_h']),''.join('<li>%s</li>'%e(x) for x in g['del_b']))
     return simple(l,'support/',p['sup'],b)
 def blocks(l,secs):

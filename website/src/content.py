@@ -391,3 +391,7 @@ for _l,_n in NEW.items():
             _c[_k][_i]=(_ic,)+tuple(_c[_k][_i][1:])
     _c['f_f'][4]=(_c['f_f'][4][0],_c['f_f'][4][1],_n['fit'])
     _c['san']=[_n['san']]; _c['stu']=[_n['stu']]
+
+# Bao hanh: kich hoat khi dien thoai ket noi loa lan dau (2026-11-23)
+for _l,_v in {'vi': 'Kích hoạt bảo hành khi điện thoại kết nối với loa lần đầu; ngày kích hoạt lưu trên máy chủ.', 'en': 'Warranty is activated the first time a phone connects to the speaker; the activation date is stored on our server.', 'ja': 'スマホが初めてスピーカーに接続したときに保証が有効化され、有効化日はサーバーに記録されます。', 'ko': '휴대폰이 처음 스피커에 연결될 때 보증이 활성화되며, 활성화 날짜는 서버에 기록됩니다.', 'fr': 'La garantie est activée la première fois qu’un téléphone se connecte à l’enceinte ; la date est enregistrée sur notre serveur.', 'zh': '手机第一次连接音箱时激活保修，激活日期记录在服务器上。'}.items():
+    _w=list(C[_l]['w_f']); _w[0]=(_w[0][0],_w[0][1],_v); C[_l]['w_f']=_w
