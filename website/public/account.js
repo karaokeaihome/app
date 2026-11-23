@@ -66,7 +66,7 @@ function badge(t,sz){var P={free:['#2ecc71','#14873f'],basic:['#d9dee5','#8a929c
   return '<svg viewBox="0 0 24 24" width="'+sz+'" height="'+sz+'" style="vertical-align:-3px"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+p[0]+'"/><stop offset="1" stop-color="'+p[1]+'"/></linearGradient></defs><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" fill="url(#'+g+')" stroke="'+p[1]+'" stroke-width="1.2"/>'+inner+'</svg>'}
 function plan(m){var pl=m&&m.plan;if(pl&&pl.tier)return pl;var w=m&&m.warranty;if(w&&w.start){var u=w.start+365*864e5;return {tier:Date.now()>u?'exp':'free',until:u}}return {tier:'free',until:0}}
 function vipDraw(m){var t=plan(m).tier;$('vipIc').innerHTML=badge('adv',18);$('vipBig').innerHTML=badge('adv',64);$('uBadge').innerHTML=badge(t,24);
-  $('vipState').textContent=t==='adv'?L.vip_on:t==='free'?L.vip_free:'';$('bVip').classList.toggle('hide',t==='adv')}
+  $('vipState').textContent=t==='adv'?L.vip_on:L.vip_free;$('bVip').classList.toggle('hide',t==='adv')}
 $('bVip').onclick=function(){$('vipBox').classList.toggle('hide')};$('bVipBuy').onclick=function(){msg('m6',L.vip_soon)};
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
 $('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};

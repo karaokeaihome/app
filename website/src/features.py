@@ -3,7 +3,7 @@
 # Biểu tượng con không trùng nhau và không trùng 32 biểu tượng ở trang chủ.
 R = {}
 R['vi'] = {
- 'badge': "Thuộc Gói nâng cao, miễn phí năm đầu tiên",
+ 'badge': "Bản miễn phí: 10 bài mỗi ngày · VIP: không giới hạn",
  'how': "Cách dùng",
  'phong-thu': dict(
   items=[("🎬","Hát theo video karaoke","Tìm bài ngay trong app. Nửa trên màn hình hiện video có lời, nửa dưới là nút thu âm."),
@@ -32,7 +32,7 @@ R['vi'] = {
    posts=(("Biển nhớ","Chị Lan"),("Tình ca quê hương","Anh Phong"),("Mùa thu Hà Nội","Bà Tư")), duet="👫 mời hát đôi")),
 }
 R['en'] = {
- 'badge': "Part of the Premium package, free for the first year",
+ 'badge': "Free: 10 a day · VIP: unlimited",
  'how': "How it works",
  'phong-thu': dict(
   items=[("🎬","Sing along to karaoke videos","Search for a song in the app. The top half shows the lyric video, the bottom half has the record button."),
@@ -61,7 +61,7 @@ R['en'] = {
    posts=(("Ocean Memories","Linda"),("Country Road Home","Peter"),("Autumn Breeze","Grandma Rose")), duet="👫 duet invite")),
 }
 R['ja'] = {
- 'badge': "プレミアムパック対象・初年度無料",
+ 'badge': "無料版：1日10曲 · VIP：無制限",
  'how': "使い方",
  'phone-thu': None,
  'phong-thu': dict(
@@ -91,7 +91,7 @@ R['ja'] = {
    posts=(("海の思い出","ユキ"),("ふるさとの道","タロウ"),("秋のそよ風","ハナおばあちゃん")), duet="👫 デュエット募集")),
 }
 R['ko'] = {
- 'badge': "프리미엄 패키지, 첫해 무료",
+ 'badge': "무료: 하루 10곡 · VIP: 무제한",
  'how': "사용 방법",
  'phong-thu': dict(
   items=[("🎬","노래방 영상에 맞춰 부르기","앱에서 바로 곡을 찾으세요. 화면 위쪽에는 가사 영상, 아래쪽에는 녹음 버튼이 있습니다."),
@@ -120,7 +120,7 @@ R['ko'] = {
    posts=(("바다의 추억","지은"),("고향 가는 길","민수"),("가을 바람","순자 할머니")), duet="👫 듀엣 초대")),
 }
 R['fr'] = {
- 'badge': "Inclus dans le Pack Premium, gratuit la première année",
+ 'badge': "Gratuit : 10 par jour · VIP : illimité",
  'how': "Comment ça marche",
  'phong-thu': dict(
   items=[("🎬","Chanter sur une vidéo karaoké","Cherchez une chanson dans l’application : la moitié haute de l’écran affiche la vidéo avec les paroles, la moitié basse le bouton d’enregistrement."),
@@ -149,7 +149,7 @@ R['fr'] = {
    posts=(("Souvenirs de la mer","Claire"),("Le chemin du village","Paul"),("Brise d’automne","Mamie Rose")), duet="👫 invitation en duo")),
 }
 R['zh'] = {
- 'badge': "属于高级套餐，首年免费",
+ 'badge': "免费版：每天 10 首 · VIP：不限",
  'how': "使用方法",
  'phong-thu': dict(
   items=[("🎬","跟着卡拉OK视频唱","在应用中直接搜歌。屏幕上半部分显示带歌词的视频，下半部分是录音按钮。"),
