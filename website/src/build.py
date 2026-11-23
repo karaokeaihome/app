@@ -133,6 +133,7 @@ def cailoa_page(l):
         '<figure><img src="%s" alt="%s" loading="lazy" width="800" height="420"><figcaption><span class="n">%d</span>%s</figcaption></figure>'%(im('g%d'%n),e(t['alt_g'].format(n=n)),n,u['g'][n-1]) for n in range(1,6)))
     b+='<h2>%s</h2><div class="gs">%s</div>'%(e(t['h3']),''.join(
         '<figure><img src="%s" alt="%s" loading="lazy" width="1000"><figcaption><span class="n">%d</span>%s</figcaption></figure>'%(im('app-'+k),e(t['alt_app']),i+1,t['s3'][i]) for i,k in enumerate(['found','busy','done'])))
+    b+='<h2>%s</h2><p>%s</p>'%(e(t['ci_h']),t['ci_p'])
     b+='<h2>%s</h2><p>%s</p>'%(e(t['h4']),t['p4'])
     b+='<h2>%s</h2><ol>%s</ol>'%(e(t['h5']),''.join('<li>%s</li>'%e(x) for x in u['none_tips']))
     b+='<h2>%s</h2><ul>%s</ul>'%(e(t['h6']),''.join('<li>%s</li>'%x for x in t['p6']))
