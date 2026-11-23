@@ -8,7 +8,7 @@ from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
 from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
-from upgrade import U as UP
+from upgrade import U as UP, TRIAL
 from cailoa import T as CL, UI as CLUI, UPG, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -117,7 +117,7 @@ def download(l):
     def card(h,btn,href,q,steps,note=''):
         return ('<div class="dlc"><h2>%s</h2><div class="qr"><img src="/img/%s" alt="QR %s"><div><a class="btn" href="%s">%s</a></div></div><ol>%s</ol>%s</div>'
                 %(e(h),q,e(h),href,e(btn),''.join('<li>%s</li>'%x for x in steps),('<p class="note">%s</p>'%e(note)) if note else ''))
-    b='<h1>%s</h1><p class="lead">%s</p><div class="dlg">%s%s</div>'%(e(p['dl_title']),e(p['dl_lead']),
+    b='<h1>%s</h1><p class="lead">%s</p><div class="card" style="border-color:#6b4a1a"><b>🎟️ %s</b><p style="margin:6px 0 0">%s</p></div><div class="dlg">%s%s</div>'%(e(p['dl_title']),e(p['dl_lead']),e(TRIAL[l][0]),e(TRIAL[l][1]),
         card(p['and_h'],p['and_btn'],APK,'qr-android.svg',p['and_steps']),card(p['ios_h'],p['ios_btn'],IOS,'qr-iphone.svg',p['ios_steps'],p['ios_note']))
     t=CL[l]
     b+=('<div class="dlc pcc" id="may-tinh"><h2>%s</h2><p>%s</p><div class="btns"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></div>'
