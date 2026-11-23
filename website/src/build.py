@@ -8,6 +8,7 @@ from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
 from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
+from upgrade import U as UP
 from cailoa import T as CL, UI as CLUI, UPG, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -17,9 +18,9 @@ e=html.escape
 LOC={'home','entertain','phone','translate','fitness','theme-kids','theme-elder','theme-women','theme-tech'}
 def im(l,n): return '/img/%s.jpg'%n if (l=='vi' or n not in LOC) else '/img/%s/%s.jpg'%(l,n)
 CSS=open(os.path.join(HERE,'page.css'),encoding='utf-8').read()+"""
-.lang{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:8px 16px 0;max-width:1100px;margin:0 auto}
-.lang a{font-size:.85rem;padding:4px 10px;border-radius:999px;border:1px solid #2a2a30;color:var(--mute);text-decoration:none}
-.lang a.on{border-color:var(--acc);color:var(--acc)}
+nav{position:relative}.upb{display:flex;align-items:center;gap:12px;max-width:820px;width:calc(100% - 32px);box-sizing:border-box;margin:18px auto 0;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#3a2a08,#1c1a14);border:1px solid #6b4a1a;color:var(--fg);text-decoration:none}.upb span{font-size:1.8rem}.upb b{flex:1}.upb em{font-style:normal;color:var(--acc);font-weight:700;white-space:nowrap}h2.ust{display:flex;align-items:center;gap:10px}h2.ust .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--acc);color:#111;display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem}nav .lg{position:relative}nav .lg summary{list-style:none;cursor:pointer;font-size:1.35rem;line-height:1;padding:4px 6px;border-radius:999px;user-select:none}nav .lg summary::-webkit-details-marker{display:none}nav .lg[open] summary{background:#222}nav .lg>div{position:absolute;right:0;top:calc(100% + 8px);background:#17171a;border:1px solid #2a2a30;border-radius:14px;padding:6px;min-width:160px;z-index:50;box-shadow:0 10px 30px #0008}nav .lg>div a{display:block!important;padding:9px 12px;border-radius:10px;color:var(--fg);text-decoration:none;white-space:nowrap}nav .lg>div a:hover{background:#222}nav .lg>div a.on{color:var(--acc);font-weight:700}
+
+
 .price{max-width:520px;margin:24px auto 0;background:linear-gradient(135deg,#2a2210,#141416);border:1px solid #4a3d18;border-radius:18px;padding:18px;text-align:center}
 .price .l{color:var(--mute);font-size:.95rem}.price .v{font-size:2.3rem;font-weight:800;color:var(--acc);line-height:1.2}.price .n{color:var(--mute);font-size:.9rem}
 .grp{margin:28px 0 6px;color:var(--acc);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
@@ -69,8 +70,8 @@ def head(l,c,title,desc,path,noidx=False):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:image" content="https://karaokeaihome.com/img/home.jpg">
 {alts}{'<meta name="robots" content="noindex">' if noidx else ''}<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><style>{CSS}</style></head><body>
-<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav><script>try{{if(localStorage.getItem('kah_acct')){{var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||{json.dumps(AT[l]['my'],ensure_ascii=False)}}}}}catch(_e){{}}</script>
-<div class="lang">{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div>'''
+<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l,'nang-cap/')}">{e(UP[l]['nav'])}</a><a href="{url(l)}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><details class="lg"><summary title="{e(NAMES[l])}" aria-label="Language">🌏</summary><div>{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div></details><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav><script>document.addEventListener('click',function(_e){{var d=document.querySelector('nav .lg');if(d&&d.open&&!d.contains(_e.target))d.open=false}});try{{if(localStorage.getItem('kah_acct')){{var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||{json.dumps(AT[l]['my'],ensure_ascii=False)}}}}}catch(_e){{}}</script>
+'''
 def foot(l,c):
     return f'''<footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a> · <a href="{url(l,'support/')}">{e(c['legal'][2])}</a></footer></body></html>'''
 def contact(l,c):
@@ -86,6 +87,7 @@ def home(l):
 <header class="hero"><h1>{e(c['h1a'])} <span>{e(c['h1b'])}</span><br>{e(c['h1c'])}</h1><p>{e(c['hero'])}</p>
 <div class="btns"><a class="btn" href="#lien-he">{e(c['cta1'])}</a><a class="btn o" href="#tinh-nang">{e(c['cta2'])}</a></div>
 <div class="price"><div class="l">{e(PRICE_LABEL[l])}</div><div class="v">{e(PRICE[l])}</div><div class="n">{e(PRICE_NOTE[l])}</div></div></header>
+<a class="upb" href="{url(l,'nang-cap/')}"><span>🚀</span><b>{e(UP[l]['banner'])}</b><em>{e(UP[l]['banner_btn'])} ›</em></a>
 <div class="wrap"><div class="gal"><img class="shot main" src="/img/loa-ban-lam-viec.jpg" alt="Karaoke AI Home"><img class="shot" src="/img/loa-phong-khach.jpg" alt="Karaoke AI Home" loading="lazy"><img class="shot" src="/img/phu-kien.jpg" alt="Karaoke AI Home" loading="lazy"></div>
 <p class="tap" style="margin-top:28px">{e(c['alt_home'])}</p><img class="shot" src="{im(l,'home')}" alt="{e(c['alt_home'])}" loading="lazy"></div>
 <main class="wrap"><section id="tinh-nang" style="border-top:0"><p class="tap">{e(UI[l]['tap'])}</p>{grid}</section>{contact(l,c)}</main>'''+foot(l,c)
@@ -158,6 +160,20 @@ def blocks(l,secs):
     return out
 def account(l):
     return simple(l,'account/',AT[l]['h'],acc_page(l,e),True)
+def upgrade(l):
+    t=UP[l]; cl=CL[l]; u=CLUI[l]; im=lambda n:'/img/cai-loa/%s/%s.jpg'%(l,n)
+    ol=lambda xs:'<ol>%s</ol>'%''.join('<li>%s</li>'%x for x in xs)
+    st=lambda n,h:'<h2 class="ust"><span class="n">%d</span>%s</h2>'%(n,e(h))
+    b='<h1>🚀 %s</h1><p class="lead">%s</p><p class="note">%s</p><div class="card" style="border-color:#6b4a1a"><b>%s</b></div>'%(e(t['h1']),e(t['lead']),e(t['need']),e(t['ios']))
+    b+=st(1,t['s1h'])+ol(t['s1'])
+    b+=st(2,t['s2h'])+'<p>%s</p><div class="gs two">%s</div>'%(e(t['s2p']),''.join('<figure><img src="%s" alt="%s" loading="lazy" width="800" height="420"><figcaption><span class="n">%d</span>%s</figcaption></figure>'%(im('g%d'%n),e(t['alt'].format(n=n)),n,u['g'][n-1]) for n in range(1,6)))
+    b+=st(3,t['s3h'])+'<div class="dlg"><div class="dlc"><h2>%s</h2>%s<p><a class="btn" href="%s">%s</a></p></div><div class="dlc"><h2>%s</h2>%s<p class="btns" style="justify-content:flex-start"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></p><p><a href="%s">%s ›</a></p></div></div>'%(
+        e(t['a_h']),ol(t['a']),url(l,'download/'),e(t['a_btn']),e(t['b_h']),ol(t['b']),WIN,e(cl['win']),MAC,e(cl['mac']),url(l,'cai-loa/'),e(t['b_more']))
+    b+='<div class="gs">%s</div>'%''.join('<figure><img src="%s" alt="%s" loading="lazy" width="1000"><figcaption>%s</figcaption></figure>'%(im('app-'+k),e(cl['alt_app']),cl['s3'][i]) for i,k in enumerate(['found','busy','done']))
+    if cl.get('ci_h'): b+='<h3>%s</h3><p>%s</p>'%(e(t['c_h']),cl['ci_p'])
+    b+=st(4,t['s4h'])+'<p>%s</p>'%e(t['s4'])
+    b+=st(5,t['s5h'])+ol(t['s5'])+'<p class="note">%s</p>'%e(t['help'])
+    return simple(l,'nang-cap/',t['h1'],b)
 def privacy(l):
     p=P[l]
     b='<h1>%s</h1><p class="mute">%s</p>%s'%(e(p['pv_title']),e(p['pv_eff']),blocks(l,LG[l]['pv']))
@@ -173,7 +189,7 @@ for l in LANGS:
     d=OUT if l=='vi' else os.path.join(OUT,l)
     os.makedirs(d,exist_ok=True)
     open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(home(l)); n+=1
-    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page),('account',account)):
+    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page),('account',account),('nang-cap',upgrade)):
         p=os.path.join(d,sub); os.makedirs(p,exist_ok=True)
         open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(fn(l)); n+=1
     for g,items in GROUPS:
@@ -186,7 +202,7 @@ open(os.path.join(OUT,'account.js'),'w',encoding='utf-8').write(AJS)
 # sitemap (khong co privacy/terms), robots, 404, chuyen huong iPhone
 urls=[]
 for l in LANGS:
-    urls.append(url(l)); urls+= [url(l,'download/'),url(l,'cai-loa/'),url(l,'support/')]
+    urls.append(url(l)); urls+= [url(l,'download/'),url(l,'nang-cap/'),url(l,'cai-loa/'),url(l,'support/')]
     urls+=[url(l,'f/%s/'%slug) for g,items in GROUPS for slug,k,i in items]
 open(os.path.join(OUT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>%s%s</loc></url>\n'%(SITE,u) for u in urls)+'</urlset>\n')
 open(os.path.join(OUT,'robots.txt'),'w').write('User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n'%SITE)  # privacy/terms: an bang meta noindex
