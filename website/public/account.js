@@ -69,7 +69,7 @@ function vipDraw(m){var t=plan(m).tier;$('vipIc').innerHTML=badge('adv',18);$('v
   $('vipState').textContent=t==='adv'?L.vip_on:t==='free'?L.vip_free:'';$('bVip').classList.toggle('hide',t==='adv')}
 $('bVip').onclick=function(){$('vipBox').classList.toggle('hide')};$('bVipBuy').onclick=function(){msg('m6',L.vip_soon)};
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
-$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoSpk').onclick=function(e){e.preventDefault();goApp('spk')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
+$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
 function notifs(n){n=n||{};$('notifs').innerHTML=['san','top','upd','promo'].map(function(k){return '<label class="sw"><span>'+esc(L['k_'+k])+'</span><input type="checkbox" data-k="'+k+'"'+(n[k]?' checked':'')+'></label>'}).join('')}
 $('notifs').onchange=function(){var n={};[].forEach.call($('notifs').querySelectorAll('input'),function(i){n[i.dataset.k]=i.checked?1:0});api('/w/acct/notif',{json:{notif:n}}).then(function(j){msg('m4',j.ok?L.saved:L.e_net,!j.ok)})};
 if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');

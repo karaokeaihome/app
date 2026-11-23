@@ -193,7 +193,7 @@ function vipDraw(m){var t=plan(m).tier;$('vipIc').innerHTML=badge('adv',18);$('v
   $('vipState').textContent=t==='adv'?L.vip_on:t==='free'?L.vip_free:'';$('bVip').classList.toggle('hide',t==='adv')}
 $('bVip').onclick=function(){$('vipBox').classList.toggle('hide')};$('bVipBuy').onclick=function(){msg('m6',L.vip_soon)};
 function goApp(w){if(!tok||!me)return;window.open('https://app.karaokeaihome.com/app/#acct='+encodeURIComponent(tok)+'&em='+encodeURIComponent(me.email||'')+'&nm='+encodeURIComponent(me.name||'')+'&go='+w+'&lang='+LG,'_blank')}
-$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoSpk').onclick=function(e){e.preventDefault();goApp('spk')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
+$('bGoSan').onclick=function(){goApp('san')};$('bGoStu').onclick=function(){goApp('stu')};$('bGoGuide').onclick=function(e){e.preventDefault();goApp('guide')};
 function notifs(n){n=n||{};$('notifs').innerHTML=['san','top','upd','promo'].map(function(k){return '<label class="sw"><span>'+esc(L['k_'+k])+'</span><input type="checkbox" data-k="'+k+'"'+(n[k]?' checked':'')+'></label>'}).join('')}
 $('notifs').onchange=function(){var n={};[].forEach.call($('notifs').querySelectorAll('input'),function(i){n[i.dataset.k]=i.checked?1:0});api('/w/acct/notif',{json:{notif:n}}).then(function(j){msg('m4',j.ok?L.saved:L.e_net,!j.ok)})};
 if(tok)load();else if(pending()){email=pending();$('iEmail').value=email;toCode()}else show('stEmail');
@@ -213,7 +213,6 @@ def page(l, e):
      '<div class="row" style="margin:14px 0"><div class="vpr on"><b>%s</b><small>%s</small></div><div class="vpr"><b>%s</b><small>%s</small></div></div><button id="bVipBuy" class="vipb" style="width:100%%;justify-content:center">%s</button><div id="m6" class="msg"></div></div></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2><div class="row"><button id="bGoSan">🎪 %s</button><button id="bGoStu">🎙️ %s</button></div><p class="mute" style="font-size:.9rem;margin-bottom:0">%s</p></div>'
      '<div class="card"><h2 style="margin-top:0">%s</h2>'
-     '<a class="li" id="bGoSpk" href="#"><i>🔑</i><span><b>%s</b><small>%s</small></span></a>'
      '<a class="li" href="%s"><i>🔄</i><span><b>%s</b><small>%s</small></span></a>'
      '<a class="li" href="%s"><i>🧰</i><span><b>%s</b><small>%s</small></span></a>'
      '<a class="li" id="bGoGuide" href="#"><i>📘</i><span><b>%s</b><small>%s</small></span></a></div>'
@@ -227,5 +226,5 @@ def page(l, e):
      '<div id="delBox" class="card hide" style="border:1px solid #6b2a2a"><p>%s</p><button class="r" id="bDelCode">%s</button><div id="delStep" class="hide"><label>%s</label><input id="iDelCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><div class="row"><button class="r" id="bDelGo">%s</button><button class="o" id="bDelNo">%s</button></div></div><div id="m5" class="msg"></div></div></div></div>'
      '<script>window.ACC_L=%s;window.ACC_LANG=%s;</script><script src="/account.js"></script>') % (
         e(t['h']), e(t['lead']), e(t['email']), e(t['send']), e(t['have']), e(t['note']), e(t['code']), e(t['login']), e(t['resend']), e(t['other']),
-        e(t['hi']), e(t['vip']), e(t['vip_sub']), e(t['vip_ben']), e(t['b1']), e(t['b1n']), e(t['b2']), e(t['b2n']), e(t['b3']), e(t['b3n']), e(t['b4']), e(t['b4n']), e(t['p1']), e(t['py']), e(t['p2']), e(t['pm']), e(t['vip']), e(t['go_h']), e(t['go_san']), e(t['go_stu']), e(t['go_note']), e(t['tools']), e(t['go_spk']), e(t['go_spkn']), t['cai'], e(t['upd']), e(t['updn']), t['cai'], e(t['setup']), e(t['setupn']), e(t['go_guide']), e(t['guiden']), e(t['nt_h']), e(t['nt_n']), e(t['songs']), e(t['voice']), e(t['stop']), e(t['acct']), e(t['name']), e(t['save']), e(t['avatar']), e(t['pick']), e(t['rmav']),
+        e(t['hi']), e(t['vip']), e(t['vip_sub']), e(t['vip_ben']), e(t['b1']), e(t['b1n']), e(t['b2']), e(t['b2n']), e(t['b3']), e(t['b3n']), e(t['b4']), e(t['b4n']), e(t['p1']), e(t['py']), e(t['p2']), e(t['pm']), e(t['vip']), e(t['go_h']), e(t['go_san']), e(t['go_stu']), e(t['go_note']), e(t['tools']), t['cai'], e(t['upd']), e(t['updn']), t['cai'], e(t['setup']), e(t['setupn']), e(t['go_guide']), e(t['guiden']), e(t['nt_h']), e(t['nt_n']), e(t['songs']), e(t['voice']), e(t['stop']), e(t['acct']), e(t['name']), e(t['save']), e(t['avatar']), e(t['pick']), e(t['rmav']),
         e(t['warranty']), e(t['logout']), e(t['delacct']), e(t['delacctq']), e(t['del_send']), e(t['code']), e(t['del_go']), e(t['del_no']), json.dumps(t, ensure_ascii=False).replace('</', '<\\/'), json.dumps(l))
