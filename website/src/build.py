@@ -8,7 +8,7 @@ from pages import P, APK, IOS, SITE, LEGAL
 from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
 from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
-from upgrade import U as UP, TRIAL
+from upgrade import U as UP, TRIAL, REMOTE
 from cailoa import T as CL, UI as CLUI, UPG, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -113,15 +113,17 @@ def qr(data,fn):
     img=qrcode.make(data,image_factory=qrcode.image.svg.SvgPathImage,border=1)
     img.save(os.path.join(OUT,'img',fn))
 def download(l):
-    p=P[l]
+    p=P[l]; vr=REMOTE[l][2]
+    va=open(os.path.join(HERE,'..','..','VERSION')).read().strip() if os.path.exists(os.path.join(HERE,'..','..','VERSION')) else ''
+    vp=open(os.path.join(HERE,'..','..','cai-loa','VERSION')).read().strip() if os.path.exists(os.path.join(HERE,'..','..','cai-loa','VERSION')) else ''
     def card(h,btn,href,q,steps,note=''):
         return ('<div class="dlc"><h2>%s</h2><div class="qr"><img src="/img/%s" alt="QR %s"><div><a class="btn" href="%s">%s</a></div></div><ol>%s</ol>%s</div>'
                 %(e(h),q,e(h),href,e(btn),''.join('<li>%s</li>'%x for x in steps),('<p class="note">%s</p>'%e(note)) if note else ''))
     b='<h1>%s</h1><p class="lead">%s</p><div class="card" style="border-color:#6b4a1a"><b>🎟️ %s</b><p style="margin:6px 0 0">%s</p></div><div class="dlg">%s%s</div>'%(e(p['dl_title']),e(p['dl_lead']),e(TRIAL[l][0]),e(TRIAL[l][1]),
-        card(p['and_h'],p['and_btn'],APK,'qr-android.svg',p['and_steps']),card(p['ios_h'],p['ios_btn'],IOS,'qr-iphone.svg',p['ios_steps'],p['ios_note']))
+        card(p['and_h'],p['and_btn'],APK,'qr-android.svg',p['and_steps'],('%s %s'%(vr,va)) if va else ''),card(p['ios_h'],p['ios_btn'],IOS,'qr-iphone.svg',p['ios_steps'],p['ios_note']))
     t=CL[l]
     b+=('<div class="dlc pcc" id="may-tinh"><h2>%s</h2><p>%s</p><div class="btns"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></div>'
-        '<ol>%s</ol><p><a href="%s">%s →</a></p></div>')%(e(t['card_h']),e(t['card_p']),WIN,e(t['win']),MAC,e(t['mac']),
+        '<ol>%s</ol><p class="note">'+e(('%s %s'%(vr,vp)) if vp else '')+'</p><p><a href="%s">%s →</a></p></div>')%(e(t['card_h']),e(t['card_p']),WIN,e(t['win']),MAC,e(t['mac']),
         ''.join('<li>%s</li>'%x for x in t['card_steps']),url(l,'cai-loa/'),e(t['guide']))
     return simple(l,'download/',p['dl'],b)
 def cailoa_page(l):
@@ -170,7 +172,7 @@ def upgrade(l):
     b+=st(3,t['s3h'])+'<div class="dlg"><div class="dlc"><h2>%s</h2>%s<p><a class="btn" href="%s">%s</a></p></div><div class="dlc"><h2>%s</h2>%s<p class="btns" style="justify-content:flex-start"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></p><p><a href="%s">%s ›</a></p></div></div>'%(
         e(t['a_h']),ol(t['a']),url(l,'download/'),e(t['a_btn']),e(t['b_h']),ol(t['b']),WIN,e(cl['win']),MAC,e(cl['mac']),url(l,'cai-loa/'),e(t['b_more']))
     b+='<div class="gs">%s</div>'%''.join('<figure><img src="%s" alt="%s" loading="lazy" width="1000"><figcaption>%s</figcaption></figure>'%(im('app-'+k),e(cl['alt_app']),cl['s3'][i]) for i,k in enumerate(['found','busy','done']))
-    if cl.get('ci_h'): b+='<h3>%s</h3><p>%s</p>'%(e(t['c_h']),cl['ci_p'])
+    rh,rs,_=REMOTE[l]; b+='<div class="dlc" id="tu-xa" style="margin-top:18px;border-color:#6b4a1a"><h2>🛟 %s</h2>%s<p class="btns" style="justify-content:flex-start"><a class="btn" href="%s">%s</a><a class="btn" href="%s">%s</a></p></div>'%(e(rh),ol(rs),WIN,e(cl['win']),MAC,e(cl['mac']))
     b+=st(4,t['s4h'])+'<p>%s</p>'%e(t['s4'])
     b+=st(5,t['s5h'])+ol(t['s5'])+'<p class="note">%s</p>'%e(t['help'])
     return simple(l,'nang-cap/',t['h1'],b)
