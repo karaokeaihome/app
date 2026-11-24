@@ -107,3 +107,12 @@ REMOTE = {'vi': ('Nhờ hãng nâng cấp từ xa', ['Làm xong bước 1 và 2 
 
 # Nho hang nang cap: may chu tu lam ngay, khong can gui ma (2026-11-23)
 for _l,_v in {'vi': 'Hãng tự nâng cấp loa qua mạng ngay, bạn không cần gửi gì. Giữ phần mềm mở đến khi báo <b>Xong</b>. Mã 6 số chỉ dùng khi bạn cần liên hệ hỗ trợ.', 'en': "We upgrade the speaker over the Internet right away; you don't need to send anything. Keep the software open until it says <b>Done</b>. The code is only needed if you contact support.", 'ja': 'メーカーがすぐにネット経由でアップグレードします。何も送る必要はありません。<b>完了</b>まではソフトを開いたままにしてください。コードはサポートに問い合わせるときだけ使います。', 'ko': '제조사가 바로 인터넷으로 업그레이드하므로 따로 보낼 것은 없습니다. <b>완료</b>될 때까지 프로그램을 열어 두세요. 코드는 지원팀에 문의할 때만 필요합니다.', 'fr': 'Nous mettons l’enceinte à niveau par Internet tout de suite ; vous n’avez rien à envoyer. Laissez l’outil ouvert jusqu’à <b>Terminé</b>. Le code ne sert que si vous contactez l’assistance.', 'zh': '厂家会立即通过网络为你升级，无需发送任何内容。在显示 <b>完成</b> 前请保持工具打开。支持码仅在联系客服时使用。'}.items(): REMOTE[_l][1][3]=_v
+
+# Bao hanh tu kich hoat khi loa ket noi Wi-Fi lan dau (khong phai khi dien thoai ket noi) - 2026-11-24
+for _l,(_h,_v) in {'vi': ('Kết nối điện thoại', 'Bảo hành 12 tháng <b>tự kích hoạt khi loa kết nối Wi‑Fi lần đầu</b>. Ngày kích hoạt lưu trên máy chủ, không xoá được. Xem mã bảo hành trên loa ở Cài đặt → Bảo hành và tra cứu tại trang Bảo hành của website.'),
+ 'en': ('Connect your phone', 'The 12‑month warranty <b>activates automatically when the speaker first connects to Wi‑Fi</b>. The date is stored on our server and cannot be reset. Find the warranty code on the speaker under Settings → Warranty and check it on the Warranty page of this website.'),
+ 'ja': ('スマホを接続', '12か月保証は<b>スピーカーが初めて Wi‑Fi に接続したときに自動で開始</b>します。開始日はサーバーに記録され、リセットできません。保証コードはスピーカーの 設定 → 保証 で確認し、このサイトの保証ページで照会できます。'),
+ 'ko': ('휴대폰 연결', '12개월 보증은 <b>스피커가 처음 Wi‑Fi에 연결될 때 자동으로 시작</b>됩니다. 날짜는 서버에 저장되며 초기화할 수 없습니다. 보증 코드는 스피커의 설정 → 보증에서 확인하고 이 웹사이트의 보증 페이지에서 조회하세요.'),
+ 'fr': ('Connecter votre téléphone', 'La garantie de 12 mois <b>s’active automatiquement à la première connexion Wi‑Fi de l’enceinte</b>. La date est enregistrée sur notre serveur et ne peut pas être réinitialisée. Le code de garantie se trouve sur l’enceinte dans Paramètres → Garantie ; vérifiez‑le sur la page Garantie de ce site.'),
+ 'zh': ('连接手机', '12 个月保修<b>在音箱首次连接 Wi‑Fi 时自动激活</b>。激活日期保存在服务器上，无法重置。保修码可在音箱 设置 → 保修 中查看，并在本网站的保修页面查询。')}.items():
+    U[_l]['s5h']=_h; _s=list(U[_l]['s5']); _s[1]=_v; U[_l]['s5']=_s

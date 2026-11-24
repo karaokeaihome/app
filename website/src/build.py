@@ -9,6 +9,7 @@ from legal import L as LG, DEL_ID
 from features import rich, CSS as RCSS
 from account import T as AT, page as acc_page, CSS as ACSS, JS as AJS
 from upgrade import U as UP, TRIAL, REMOTE
+from warranty import T as WT, page as wty_page, CSS as WCSS, JS as WJS
 from cailoa import T as CL, UI as CLUI, UPG, WIN, MAC, WIN_LATEST, MAC_LATEST
 import qrcode, qrcode.image.svg
 HERE=os.path.dirname(os.path.abspath(__file__))
@@ -48,7 +49,7 @@ nav{position:relative}nav a.nb{padding:6px 12px;border-radius:999px;border:1px s
 .gs{display:grid;gap:14px;grid-template-columns:1fr;margin:14px 0}.gs figure{margin:0;background:var(--card);border:1px solid #2a2a30;border-radius:16px;padding:12px}
 .gs figure img{width:100%;border-radius:10px;display:block;margin:0}.gs figcaption{margin-top:8px}.gs figcaption b{color:var(--acc)}.gs .n{color:var(--acc);font-weight:800;margin-right:6px}
 @media(min-width:860px){.gs.two{grid-template-columns:1fr 1fr}}
-"""+RCSS+ACSS+"""
+"""+RCSS+ACSS+WCSS+"""
 .gal{display:grid;gap:12px;grid-template-columns:1fr 1fr;max-width:760px;margin:24px auto 0}.gal .main{grid-column:1/3}.gal img{border-radius:16px}
 """
 # (slug, group key, list key, index)  group headings reuse section tags
@@ -71,10 +72,10 @@ def head(l,c,title,desc,path,noidx=False):
     return f'''<!doctype html><html lang="{l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:image" content="https://karaokeaihome.com/img/home.jpg">
 {alts}{'<meta name="robots" content="noindex">' if noidx else ''}<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><style>{CSS}</style></head><body>
-<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l,'nang-cap/')}">{e(UP[l]['nav'])}</a><a href="{url(l,'mua/')}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a class="nb" href="{url(l,'mua/')}">{e(TAB[l][0])}</a><details class="lg"><summary title="{e(NAMES[l])}" aria-label="Language"><svg class="ic-globe" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-.15em"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4" ry="9.2"/><path d="M3 12h18M4.6 7.3h14.8M4.6 16.7h14.8"/></svg></summary><div>{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div></details><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav><script>document.addEventListener('click',function(_e){{var d=document.querySelector('nav .lg');if(d&&d.open&&!d.contains(_e.target))d.open=false}});try{{if(localStorage.getItem('kah_acct')){{var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||{json.dumps(AT[l]['my'],ensure_ascii=False)}}}}}catch(_e){{}}</script>
+<nav><b><a href="{url(l)}" style="color:var(--fg)">Karaoke AI Home</a></b><a href="{url(l)}#tinh-nang">{e(UI[l]['all'])}</a><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a><a href="{url(l,'nang-cap/')}">{e(UP[l]['nav'])}</a><a href="{url(l,'mua/')}#lien-he">{e(c['nav'][3])}</a><a href="{url(l,'support/')}">{e(c['nav'][4])}</a><a href="{url(l,'bao-hanh/')}">{e(WT[l]['nav'])}</a><a class="nb" href="{url(l,'mua/')}">{e(TAB[l][0])}</a><details class="lg"><summary title="{e(NAMES[l])}" aria-label="Language"><svg class="ic-globe" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="vertical-align:-.15em"><circle cx="12" cy="12" r="9.2"/><ellipse cx="12" cy="12" rx="4" ry="9.2"/><path d="M3 12h18M4.6 7.3h14.8M4.6 16.7h14.8"/></svg></summary><div>{''.join('<a href="%s" class="%s" lang="%s">%s</a>'%(url(x,path),'on' if x==l else '',x,NAMES[x]) for x in LANGS)}</div></details><a class="nl" href="{url(l,'account/')}">{e(AT[l]['nav'])}</a></nav><script>document.addEventListener('click',function(_e){{var d=document.querySelector('nav .lg');if(d&&d.open&&!d.contains(_e.target))d.open=false}});try{{if(localStorage.getItem('kah_acct')){{var _a=document.querySelector('nav a.nl');_a.textContent=localStorage.getItem('kah_nm')||{json.dumps(AT[l]['my'],ensure_ascii=False)}}}}}catch(_e){{}}</script>
 '''
 def foot(l,c):
-    return f'''<footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a> · <a href="{url(l,'support/')}">{e(c['legal'][2])}</a></footer></body></html>'''
+    return f'''<footer>© 2026 Karaoke AI Home · info@karaokeaihome.com<br><a href="{url(l,'download/')}">{e(P[l]['dl'])}</a> · <a href="{url(l,'support/')}">{e(c['legal'][2])}</a> · <a href="{url(l,'bao-hanh/')}">{e(WT[l]['h'])}</a></footer></body></html>'''
 def contact(l,c):
     return f'''<section id="lien-he"><div class="contact"><h2 style="margin-top:0">{e(c['c_h'])}</h2><p class="lead" style="margin:0 auto 12px">{e(c['c_p'])}</p>
 <a class="mail" href="mailto:info@karaokeaihome.com">info@karaokeaihome.com</a></div></section>'''
@@ -100,6 +101,7 @@ def detail(l,slug,gkey,key,idx,others):
     say=''
     if slug in ('goi-bai','tong-vang-mic'):
         say='<p class="mute" style="margin:14px 0 0;font-size:.9rem">%s</p><div class="say">%s</div>'%(e(c['say_label']),''.join('<span>%s</span>'%e(s) for s in SAY[l]))
+    if slug=='bao-hanh': say+='<p style="margin:18px 0 0"><a class="btn" href="%s">%s ›</a></p>'%(url(l,'bao-hanh/'),e(WT[l]['h']))
     more='<div class="grp">%s</div><div class="icons">%s</div>'%(e(UI[l]['more']),''.join(tile(l,c,*o) for o in others if o[0]!=slug))
     return head(l,c,'%s – Karaoke AI Home'%t,t,'f/%s/'%slug)+f'''
 <main class="detail"><a class="bk" href="{url(l)}#tinh-nang">{e(UI[l]['back'])}</a>
@@ -161,6 +163,8 @@ def blocks(l,secs):
     return out
 def account(l):
     return simple(l,'account/',AT[l]['h'],acc_page(l,e),True)
+def warranty(l):
+    return simple(l,'bao-hanh/',WT[l]['h'],wty_page(l,e))
 def upgrade(l):
     t=UP[l]; cl=CL[l]; u=CLUI[l]; im=lambda n:'/img/cai-loa/%s/%s.jpg'%(l,n)
     ol=lambda xs:'<ol>%s</ol>'%''.join('<li>%s</li>'%x for x in xs)
@@ -195,7 +199,7 @@ for l in LANGS:
     d=OUT if l=='vi' else os.path.join(OUT,l)
     os.makedirs(d,exist_ok=True)
     open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(home(l)); n+=1
-    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page),('account',account),('nang-cap',upgrade),('mua',buy)):
+    for sub,fn in (('download',download),('support',support),('privacy',privacy),('terms',terms),('cai-loa',cailoa_page),('account',account),('nang-cap',upgrade),('mua',buy),('bao-hanh',warranty)):
         p=os.path.join(d,sub); os.makedirs(p,exist_ok=True)
         open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(fn(l)); n+=1
     for g,items in GROUPS:
@@ -204,11 +208,12 @@ for l in LANGS:
             open(os.path.join(p,'index.html'),'w',encoding='utf-8').write(detail(l,slug,g,key,idx,items)); n+=1
 print('pages',n)
 open(os.path.join(OUT,'account.js'),'w',encoding='utf-8').write(AJS)
+open(os.path.join(OUT,'bao-hanh.js'),'w',encoding='utf-8').write(WJS)
 
 # sitemap (khong co privacy/terms), robots, 404, chuyen huong iPhone
 urls=[]
 for l in LANGS:
-    urls.append(url(l)); urls+= [url(l,'mua/'),url(l,'download/'),url(l,'nang-cap/'),url(l,'cai-loa/'),url(l,'support/')]
+    urls.append(url(l)); urls+= [url(l,'mua/'),url(l,'download/'),url(l,'nang-cap/'),url(l,'cai-loa/'),url(l,'support/'),url(l,'bao-hanh/')]
     urls+=[url(l,'f/%s/'%slug) for g,items in GROUPS for slug,k,i in items]
 open(os.path.join(OUT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>%s%s</loc></url>\n'%(SITE,u) for u in urls)+'</urlset>\n')
 open(os.path.join(OUT,'robots.txt'),'w').write('User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n'%SITE)  # privacy/terms: an bang meta noindex
